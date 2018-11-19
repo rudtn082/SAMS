@@ -9,7 +9,8 @@ import javax.swing.JTextField;
 
 public class UI_Main extends JFrame {
 	Login Login = new Login(this);
-	Main_Menu Main_Menu = new Main_Menu(this);
+	Main_Menu_admin Main_Menu_admin = new Main_Menu_admin(this);
+	register register = new register(this);
 	final static int width = 1024;
 	final static int height = 768;
 
@@ -24,16 +25,25 @@ public class UI_Main extends JFrame {
 	}
 
 	public void update_UI(String panelName) {
-		if (panelName.equals("Login")) {
+		switch(panelName) {
+		case "Login":
 			getContentPane().removeAll();
 			getContentPane().add(Login);
 			revalidate();
 			repaint();
-		} else {
+			break;
+		case "Main_Menu_admin":
 			getContentPane().removeAll();
-			getContentPane().add(Main_Menu);
+			getContentPane().add(Main_Menu_admin);
 			revalidate();
 			repaint();
+			break;
+		case "register":
+			getContentPane().removeAll();
+			getContentPane().add(register);
+			revalidate();
+			repaint();
+			break;
 		}
 	}
 }
