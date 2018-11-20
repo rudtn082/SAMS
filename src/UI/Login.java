@@ -23,7 +23,6 @@ public class Login extends JPanel{
 	BufferedImage img = null;
 	JButton bt;
 	JLabel Id, passwd;
-	JLabel la = new JLabel("No Mouse Event");
 	UI_Main ui;
 
 	public Login(UI_Main ui) {
@@ -34,15 +33,7 @@ public class Login extends JPanel{
 		JLabel lblNewLabel = new JLabel(""); 
 	    lblNewLabel.setIcon(new ImageIcon("Resource/login.png")); 
 	    lblNewLabel.setBounds(0, 0, 1024, 768);
-		
-		////////////////////////////////////////////////////////////////////////// 좌표볼려구
-
-		addMouseListener(new MyMouseListener());
-		addMouseMotionListener(new MyMouseListener());
-		la.setBounds(0, 0, 200, 30);
-		la.setForeground(Color.WHITE);
-
-		////////////////////////////////////////////////////////////////////////////
+	
 
 		// 아이디 필드
 		loginTextField = new JTextField(10);	
@@ -50,6 +41,7 @@ public class Login extends JPanel{
 		loginTextField.setOpaque(false);		
 		loginTextField.setForeground(Color.WHITE);
 		loginTextField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		loginTextField.setCaretColor(Color.white);
 		
 		// 패스워드 필드
 		passwordField = new JPasswordField(10);
@@ -57,6 +49,7 @@ public class Login extends JPanel{
 		passwordField.setOpaque(false);		
 		passwordField.setForeground(Color.WHITE);
 		passwordField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		passwordField.setCaretColor(Color.white);
 		
 		// 로그인버튼 추가
 		bt = new JButton("로그인");
@@ -67,7 +60,6 @@ public class Login extends JPanel{
 		bt.setFocusPainted(false);	
 		
 		add(loginTextField);
-		add(la);
 		add(passwordField);
 		add(bt);
 		add(lblNewLabel);
@@ -90,42 +82,5 @@ public class Login extends JPanel{
 				
 			}
 		}
-	}
-
-	class MyMouseListener implements MouseListener, MouseMotionListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			la.setText("MouseClicked(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			la.setText("MousePressed(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			la.setText("MouseReleased(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseDragged(MouseEvent e) {
-			la.setText("MouseDragged(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseMoved(MouseEvent e) {
-			la.setText("MouseMoved(" + e.getX() + "," + e.getY() + ")");
-		}
-
 	}
 }

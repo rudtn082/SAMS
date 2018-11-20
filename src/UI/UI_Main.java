@@ -10,9 +10,9 @@ import javax.swing.JTextField;
 public class UI_Main extends JFrame {
 	Login Login = new Login(this);
 	Main_Menu_admin Main_Menu_admin = new Main_Menu_admin(this);
-	register register = new register(this);
+	register_UI register_UI = new register_UI(this);
 	final static int width = 1024;
-	final static int height = 768;
+	final static int height = 800;
 
 	public UI_Main() {
 		setTitle("학사관리 시스템");
@@ -40,7 +40,7 @@ public class UI_Main extends JFrame {
 			break;
 		case "register":
 			getContentPane().removeAll();
-			getContentPane().add(register);
+			getContentPane().add(register_UI);
 			revalidate();
 			repaint();
 			break;

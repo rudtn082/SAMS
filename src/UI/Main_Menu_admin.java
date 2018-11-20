@@ -13,9 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import UI.Login.MyActionListener;
-import UI.Login.MyMouseListener;
-
 public class Main_Menu_admin extends JPanel {
 	JButton register_bt, grade_bt, scholarship_bt;
 	UI_Main ui;
@@ -71,12 +68,24 @@ public class Main_Menu_admin extends JPanel {
 		add(la);
 		add(lblNewLabel);
 		register_bt.addActionListener(new MyActionListener());
+		grade_bt.addActionListener(new MyActionListener());
+		scholarship_bt.addActionListener(new MyActionListener());
 	}
 
 	class MyActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ui.update_UI("register");
+			switch(e.getActionCommand()) {
+			case "切利包府":
+				ui.update_UI("register");
+				break;
+			case "己利包府":
+				System.out.println("己利包府 滚瓢");
+				break;
+			case "厘切包府":
+				System.out.println("厘切包府 滚瓢");
+				break;
+			}
 		}
 	}
 
