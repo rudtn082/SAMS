@@ -1,16 +1,12 @@
 package UI;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+
+import People.Student;
 
 public class UI_Main extends JFrame {
+	Student st = new Student();
 	Login Login = new Login(this);
-	Main_Menu_admin Main_Menu_admin = new Main_Menu_admin(this);
-	register_UI register_UI = new register_UI(this);
 	final static int width = 1024;
 	final static int height = 800;
 
@@ -25,6 +21,11 @@ public class UI_Main extends JFrame {
 	}
 
 	public void update_UI(String panelName) {
+		Main_Menu_admin Main_Menu_admin = new Main_Menu_admin(this);
+		register_UI register_UI = new register_UI(this);
+		schoolRegister schoolRegister = new schoolRegister(this);
+		Main_Menu_Student Main_Menu_Student = new Main_Menu_Student(this);
+		checkInfo_UI checkInfo_UI = new checkInfo_UI(this);
 		switch(panelName) {
 		case "Login":
 			getContentPane().removeAll();
@@ -44,6 +45,32 @@ public class UI_Main extends JFrame {
 			revalidate();
 			repaint();
 			break;
+		case "Main_Menu_Student":
+			getContentPane().removeAll();
+			getContentPane().add(Main_Menu_Student);
+			revalidate();
+			repaint();
+			break;
+		case "schoolRegister":
+			getContentPane().removeAll();
+			getContentPane().add(schoolRegister);
+			revalidate();
+			repaint();
+			break;
+		case "checkInfo_UI":
+			getContentPane().removeAll();
+			getContentPane().add(checkInfo_UI);
+			revalidate();
+			repaint();
+			break;
 		}
+	}
+	
+	public Student getStudent() {
+		return st;
+	}
+	public void setStudent(String ID, String Name) {
+		st.setsID(ID);
+		st.setsName(Name);
 	}
 }

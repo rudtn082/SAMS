@@ -14,14 +14,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import SAMS.register;
+import schoolRegister.register;
 
 public class register_UI extends JPanel {
 	JTextField name, id, address, gender, status, dob;
 	JButton register_bt, grade_bt, scholarship_bt;
 	UI_Main ui;
 	JButton ok, cancel;
-	JLabel la = new JLabel("No Mouse Event");
 
 	public register_UI(UI_Main ui) {
 		this.ui = ui;
@@ -31,17 +30,7 @@ public class register_UI extends JPanel {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("Resource/register.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
-		
 
-		////////////////////////////////////////////////////////////////////////// 좌표볼려구
-
-		addMouseListener(new MyMouseListener());
-		addMouseMotionListener(new MyMouseListener());
-		la.setBounds(0, 0, 200, 30);
-		la.setForeground(Color.WHITE);
-
-		////////////////////////////////////////////////////////////////////////////
-		
 		// 학적관리 버튼 추가
 		register_bt = new JButton("학적관리");
 		register_bt.setBorderPainted(false);
@@ -67,68 +56,68 @@ public class register_UI extends JPanel {
 		scholarship_bt.setBounds(556, 23, 200, 55);
 
 		// 이름 필드
-		name = new JTextField(10);	
+		name = new JTextField(10);
 		name.setBounds(333, 195, 450, 55);
-		name.setOpaque(false);		
+		name.setOpaque(false);
 		name.setForeground(Color.WHITE);
 		name.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		name.setCaretColor(Color.white);
-		
+
 		// 학번 필드
-		id = new JTextField(10);	
+		id = new JTextField(10);
 		id.setBounds(333, 268, 450, 55);
-		id.setOpaque(false);		
+		id.setOpaque(false);
 		id.setForeground(Color.WHITE);
 		id.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		id.setCaretColor(Color.white);
-		
+
 		// 주소 필드
-		address = new JTextField(10);	
+		address = new JTextField(10);
 		address.setBounds(333, 341, 450, 55);
-		address.setOpaque(false);		
+		address.setOpaque(false);
 		address.setForeground(Color.WHITE);
 		address.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		address.setCaretColor(Color.white);
-		
+
 		// 성별 필드
-		gender = new JTextField(10);	
+		gender = new JTextField(10);
 		gender.setBounds(333, 414, 450, 55);
-		gender.setOpaque(false);		
+		gender.setOpaque(false);
 		gender.setForeground(Color.WHITE);
 		gender.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		gender.setCaretColor(Color.white);
 
 		// 제적상황 필드
-		status = new JTextField(10);	
+		status = new JTextField(10);
 		status.setBounds(333, 487, 450, 55);
-		status.setOpaque(false);		
+		status.setOpaque(false);
 		status.setForeground(Color.WHITE);
 		status.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		status.setCaretColor(Color.white);
 
 		// 생년월일 필드
-		dob = new JTextField(10);	
+		dob = new JTextField(10);
 		dob.setBounds(333, 560, 450, 55);
-		dob.setOpaque(false);		
+		dob.setOpaque(false);
 		dob.setForeground(Color.WHITE);
 		dob.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		dob.setCaretColor(Color.white);
 
-		// 로그인버튼 추가
+		// 저장버튼 추가
 		ok = new JButton("저장");
 		ok.setBackground(new Color(114, 137, 218));
 		ok.setForeground(Color.WHITE);
 		ok.setBounds(105, 647, 350, 60);
 		ok.setBorderPainted(false);
-		ok.setFocusPainted(false);	
-		
+		ok.setFocusPainted(false);
+
 		// 취소버튼 추가
 		cancel = new JButton("취소");
 		cancel.setBackground(new Color(114, 137, 218));
 		cancel.setForeground(Color.WHITE);
 		cancel.setBounds(510, 647, 350, 60);
 		cancel.setBorderPainted(false);
-		cancel.setFocusPainted(false);	
+		cancel.setFocusPainted(false);
 
 		add(name);
 		add(id);
@@ -137,7 +126,6 @@ public class register_UI extends JPanel {
 		add(status);
 		add(dob);
 		add(cancel);
-		add(la);
 		add(ok);
 		add(register_bt);
 		add(grade_bt);
@@ -149,111 +137,106 @@ public class register_UI extends JPanel {
 		ok.addActionListener(new MyActionListener());
 		cancel.addActionListener(new MyActionListener());
 	}
-	
+
 	class MyActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			switch(e.getActionCommand()) {
+			switch (e.getActionCommand()) {
 			case "저장":
 				// 이름 예외처리
-				if(name.getText().isEmpty()) {
+				if (name.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "이름을 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 					break;
-				}
-				else {
-					if(isStringDouble(name.getText()) == true) {
+				} else {
+					if (isStringDouble(name.getText()) == true) {
 						JOptionPane.showMessageDialog(null, "이름은 글자로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 						break;
 					}
 				}
-				
+
 				// 학번 예외처리
-				if(id.getText().isEmpty()) {
+				if (id.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "학번을 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 					break;
-				}
-				else {
-					if(isStringDouble(id.getText()) == false) {
+				} else {
+					if (isStringDouble(id.getText()) == false) {
 						JOptionPane.showMessageDialog(null, "학번은 숫자로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 						break;
-					}
-					else {
-						if(id.getText().length() != 8) {
-							JOptionPane.showMessageDialog(null, "학번은 8자리로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
+					} else {
+						if (id.getText().length() != 8) {
+							JOptionPane.showMessageDialog(null, "학번은 8자리로 입력해주세요.", "입력 오류",
+									JOptionPane.WARNING_MESSAGE);
 							break;
-						}					
+						}
 					}
 				}
-				
+
 				// 주소 예외처리
-				if(address.getText().isEmpty()) {
+				if (address.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "주소를 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 					break;
-				}
-				else {
-					if(isStringDouble(address.getText()) == true) {
+				} else {
+					if (isStringDouble(address.getText()) == true) {
 						JOptionPane.showMessageDialog(null, "주소는 글자로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 						break;
 					}
 				}
-				
+
 				// 성별 예외처리
-				if(gender.getText().isEmpty()) {
+				if (gender.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "성별을 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 					break;
-				}
-				else {
-					if(isStringDouble(gender.getText()) == true) {
+				} else {
+					if (isStringDouble(gender.getText()) == true) {
 						JOptionPane.showMessageDialog(null, "성별은 글자로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 						break;
-					}
-					else {
-						if(gender.getText().equals("남") || gender.getText().equals("여")) {
-						}
-						else {
-							JOptionPane.showMessageDialog(null, "성별은 남/여로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
+					} else {
+						if (gender.getText().equals("남") || gender.getText().equals("여")) {
+						} else {
+							JOptionPane.showMessageDialog(null, "성별은 남/여로 입력해주세요.", "입력 오류",
+									JOptionPane.WARNING_MESSAGE);
 							break;
 						}
 					}
 				}
-				
+
 				// 제적상황 예외처리
 				Boolean YorN = null;
-				if(status.getText().isEmpty()) {
+				if (status.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "제적상황을 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 					break;
-				}
-				else {
-					if(status.getText().equals("Y") || status.getText().equals("y")) {
+				} else {
+					if (status.getText().equals("Y") || status.getText().equals("y")) {
 						YorN = true;
-					} else if(status.getText().equals("N") || status.getText().equals("n")) {
+					} else if (status.getText().equals("N") || status.getText().equals("n")) {
 						YorN = false;
 					} else {
-						JOptionPane.showMessageDialog(null, "제적상황은 Y 또는 N으로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "제적상황은 Y 또는 N으로 입력해주세요.", "입력 오류",
+								JOptionPane.WARNING_MESSAGE);
 					}
 				}
-				
+
 				// 생년월일 예외처리
-				if(dob.getText().isEmpty()) {
+				if (dob.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "생년월일을 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 					break;
-				}
-				else {
-					if(isStringDouble(dob.getText()) == false) {
+				} else {
+					if (isStringDouble(dob.getText()) == false) {
 						JOptionPane.showMessageDialog(null, "생년월일은 숫자로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 						break;
-					}
-					else {
-						if(dob.getText().length() != 6) {
-							JOptionPane.showMessageDialog(null, "생년월일은 6자리로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
+					} else {
+						if (dob.getText().length() != 6) {
+							JOptionPane.showMessageDialog(null, "생년월일은 6자리로 입력해주세요.", "입력 오류",
+									JOptionPane.WARNING_MESSAGE);
 							break;
-						}					
+						}
 					}
 				}
-				
+
 				// 학적생성
 				register reg = new register();
-				String message = reg.setSID(name.getText(), Integer.parseInt(id.getText()), address.getText(), gender.getText(), YorN, Integer.parseInt(dob.getText()));
+				String message = reg.setSID(name.getText(), Integer.parseInt(id.getText()), address.getText(),
+						gender.getText(), YorN, Integer.parseInt(dob.getText()));
 				JOptionPane.showMessageDialog(null, message, "입력 결과", JOptionPane.INFORMATION_MESSAGE);
 				break;
 			case "취소":
@@ -270,52 +253,15 @@ public class register_UI extends JPanel {
 				break;
 			}
 		}
-		
+
 		public boolean isStringDouble(String s) {
-		    try {
-		        Double.parseDouble(s);
-		        return true;
-		    } catch (NumberFormatException e) {
-		        return false;
-		    }
-		  }
-	}
-
-	class MyMouseListener implements MouseListener, MouseMotionListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			la.setText("MouseClicked(" + e.getX() + "," + e.getY() + ")");
+			try {
+				Double.parseDouble(s);
+				return true;
+			} catch (NumberFormatException e) {
+				return false;
+			}
 		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			la.setText("MousePressed(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			la.setText("MouseReleased(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseDragged(MouseEvent e) {
-			la.setText("MouseDragged(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseMoved(MouseEvent e) {
-			la.setText("MouseMoved(" + e.getX() + "," + e.getY() + ")");
-		}
-
 	}
 
 }

@@ -2,7 +2,7 @@ package People;
 
 public class Student {
 	private String sID;
-	private int sName;
+	private String sName;
 	
 	public String getsID() {
 		return sID;
@@ -10,10 +10,10 @@ public class Student {
 	public void setsID(String sID) {
 		this.sID = sID;
 	}
-	public int getsName() {
+	public String getsName() {
 		return sName;
 	}
-	public void setsName(int sName) {
+	public void setsName(String sName) {
 		this.sName = sName;
 	}
 }

@@ -13,10 +13,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import People.Student;
+
 public class Main_Menu_admin extends JPanel {
 	JButton register_bt, grade_bt, scholarship_bt;
 	UI_Main ui;
-	JLabel la = new JLabel("No Mouse Event");
+	JLabel aID;
 
 	public Main_Menu_admin(UI_Main ui) {
 		this.ui = ui;
@@ -26,20 +28,14 @@ public class Main_Menu_admin extends JPanel {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("Resource/Main_Menu.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
+
+		// 로그인 계정 라벨
+		aID = new JLabel("admin");
+		aID.setBounds(807, 133, 100, 20);
+		aID.setForeground(Color.WHITE);
 		
-
-		////////////////////////////////////////////////////////////////////////// 좌표볼려구
-
-		addMouseListener(new MyMouseListener());
-		addMouseMotionListener(new MyMouseListener());
-		la.setBounds(0, 0, 200, 30);
-		la.setForeground(Color.WHITE);
-
-		////////////////////////////////////////////////////////////////////////////
-
 		// 학적관리 버튼 추가
 		register_bt = new JButton("학적관리");
-		register_bt.setBorderPainted(false);
 		register_bt.setContentAreaFilled(false);
 		register_bt.setFocusPainted(false);
 		register_bt.setForeground(Color.WHITE);
@@ -47,7 +43,6 @@ public class Main_Menu_admin extends JPanel {
 
 		// 성적관리 버튼 추가
 		grade_bt = new JButton("성적관리");
-		grade_bt.setBorderPainted(false);
 		grade_bt.setContentAreaFilled(false);
 		grade_bt.setFocusPainted(false);
 		grade_bt.setForeground(Color.WHITE);
@@ -55,17 +50,16 @@ public class Main_Menu_admin extends JPanel {
 
 		// 장학관리 버튼 추가
 		scholarship_bt = new JButton("장학관리");
-		scholarship_bt.setBorderPainted(false);
 		scholarship_bt.setContentAreaFilled(false);
 		scholarship_bt.setFocusPainted(false);
 		scholarship_bt.setForeground(Color.WHITE);
 		scholarship_bt.setBounds(556, 23, 200, 55);
 		
 
+		add(aID);
 		add(register_bt);
 		add(grade_bt);
 		add(scholarship_bt);
-		add(la);
 		add(lblNewLabel);
 		register_bt.addActionListener(new MyActionListener());
 		grade_bt.addActionListener(new MyActionListener());
@@ -87,42 +81,5 @@ public class Main_Menu_admin extends JPanel {
 				break;
 			}
 		}
-	}
-
-	class MyMouseListener implements MouseListener, MouseMotionListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			la.setText("MouseClicked(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			la.setText("MousePressed(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			la.setText("MouseReleased(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseDragged(MouseEvent e) {
-			la.setText("MouseDragged(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseMoved(MouseEvent e) {
-			la.setText("MouseMoved(" + e.getX() + "," + e.getY() + ")");
-		}
-
 	}
 }
