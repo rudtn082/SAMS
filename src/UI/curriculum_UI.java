@@ -6,29 +6,27 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-import People.Student;
-import schoolRegister.checkInfo;
+import UI.schoolRegister.MyActionListener;
+import UI.schoolRegister.MyMouseListener;
 
-public class checkInfo_UI extends JPanel {
-	JButton curriculum_bt, register_bt, grade_bt, course_bt, re;
+public class curriculum_UI extends JPanel  {
+	JButton curriculum_bt, register_bt, grade_bt, course_bt, subCheck_bt, scheduleCheck_bt, courseCheck_bt, altCourse_bt;
 	UI_Main ui;
-	JLabel la = new JLabel("No Mouse Event"), sID, sName, sAddress, sGender, sStatus, sBOD;
+	JLabel la = new JLabel("No Mouse Event");
 
-	public checkInfo_UI(UI_Main ui) {
+	public curriculum_UI(UI_Main ui) {
 		this.ui = ui;
 		// 레이아웃 설정
 		setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Resource/checkInfo.png"));
+		JLabel lblNewLabel = new JLabel("교과 관리");
+		lblNewLabel.setIcon(new ImageIcon("Resource/schoolRegister.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
 
 		////////////////////////////////////////////////////////////////////////// 좌표볼려구
@@ -38,40 +36,7 @@ public class checkInfo_UI extends JPanel {
 		la.setBounds(0, 0, 200, 30);
 		la.setForeground(Color.WHITE);
 
-		////////////////////////////////////////////////////////////////////////////
-
-		// 학생 정보 받아오기
-		checkInfo ci = new checkInfo();
-		Student st = ui.getStudent();
-		if(st.getsID() == null) {
-			return;
-		}
-		String stuStr = ci.checkInfo(st.getsID());
-		String[] splitString = stuStr.split(" ");
-
-		sID = new JLabel(st.getsID());
-		sID.setBounds(480, 270, 450, 55);
-		sID.setForeground(Color.WHITE);
-
-		sName = new JLabel(splitString[0]);
-		sName.setBounds(480, 197, 450, 55);
-		sName.setForeground(Color.WHITE);
-
-		sAddress = new JLabel(splitString[2]);
-		sAddress.setBounds(480, 343, 450, 55);
-		sAddress.setForeground(Color.WHITE);
-
-		sGender = new JLabel(splitString[3]);
-		sGender.setBounds(480, 418, 450, 55);
-		sGender.setForeground(Color.WHITE);
-
-		sStatus = new JLabel(splitString[4]);
-		sStatus.setBounds(480, 490, 450, 55);
-		sStatus.setForeground(Color.WHITE);
-
-		sBOD = new JLabel(splitString[5]);
-		sBOD.setBounds(480, 565, 450, 55);
-		sBOD.setForeground(Color.WHITE);
+		// 메뉴 바  버튼 들 //
 
 		// 교과관리 버튼 추가
 		curriculum_bt = new JButton("교과관리");
@@ -101,38 +66,70 @@ public class checkInfo_UI extends JPanel {
 		course_bt.setForeground(Color.WHITE);
 		course_bt.setBounds(770, 23, 200, 55);
 
-		// 저장버튼 추가
-		re = new JButton("돌아가기");
-		re.setBackground(new Color(114, 137, 218));
-		re.setForeground(Color.WHITE);
-		re.setBounds(307, 647, 350, 60);
-		re.setBorderPainted(false);
-		re.setFocusPainted(false);
+		// 교과 관리 버튼 들 //
 
-		add(sID);
-		add(sName);
-		add(sAddress);
-		add(sGender);
-		add(sStatus);
-		add(sBOD);
-		add(re);
+		// 교과목(조회) 버튼 추가
+		subCheck_bt = new JButton("교과목");
+		subCheck_bt.setBackground(new Color(114, 137, 218));
+		subCheck_bt.setForeground(Color.WHITE);
+		subCheck_bt.setBounds(100, 280, 400, 60);
+		subCheck_bt.setBorderPainted(false);
+		subCheck_bt.setFocusPainted(false);	
+		
+		// 강의 시간표 버튼 추가
+		scheduleCheck_bt = new JButton("강의 시간표");
+		scheduleCheck_bt.setBackground(new Color(114, 137, 218));
+		scheduleCheck_bt.setForeground(Color.WHITE);
+		scheduleCheck_bt.setBounds(570, 280, 400, 60);
+		scheduleCheck_bt.setBorderPainted(false);
+		scheduleCheck_bt.setFocusPainted(false);	
+		
+		// 교육 과정 버튼 추가
+		courseCheck_bt = new JButton("교육과정");
+		courseCheck_bt.setBackground(new Color(114, 137, 218));
+		courseCheck_bt.setForeground(Color.WHITE);
+		courseCheck_bt.setBounds(100, 530, 400, 60);
+		courseCheck_bt.setBorderPainted(false);
+		courseCheck_bt.setFocusPainted(false);	
+		
+		// 대체 과정 버튼 추가
+		altCourse_bt = new JButton("대체과목");
+		altCourse_bt.setBackground(new Color(114, 137, 218));
+		altCourse_bt.setForeground(Color.WHITE);
+		altCourse_bt.setBounds(570, 530, 400, 60);
+		altCourse_bt.setBorderPainted(false);
+		altCourse_bt.setFocusPainted(false);	
+		
+		// 메뉴바
 		add(curriculum_bt);
 		add(register_bt);
 		add(grade_bt);
 		add(course_bt);
 		add(la);
+		// 교과 관리
+		add(subCheck_bt);
+		add(scheduleCheck_bt);
+		add(courseCheck_bt);
+		add(altCourse_bt);
+		
+		// 메뉴 바
 		add(lblNewLabel);
 		curriculum_bt.addActionListener(new MyActionListener());
 		register_bt.addActionListener(new MyActionListener());
 		grade_bt.addActionListener(new MyActionListener());
 		course_bt.addActionListener(new MyActionListener());
-		re.addActionListener(new MyActionListener());
+		// 교과 관리
+		subCheck_bt.addActionListener(new MyActionListener());
+		scheduleCheck_bt.addActionListener(new MyActionListener());
+		courseCheck_bt.addActionListener(new MyActionListener());
+		altCourse_bt.addActionListener(new MyActionListener());
 	}
 
 	class MyActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			switch (e.getActionCommand()) {
+			// 메뉴 바
 			case "학적관리":
 				ui.update_UI("schoolRegister");
 				break;
@@ -145,8 +142,18 @@ public class checkInfo_UI extends JPanel {
 			case "수강관리":
 				System.out.println("수강관리 버튼");
 				break;
-			case "돌아가기":
-				ui.update_UI("schoolRegister");
+			// 교과 관리 버튼
+			case "교과목":
+				System.out.println("교과목 버튼");
+				break;
+			case "강의 시간표":
+				System.out.println("강의 시간표 버튼");
+				break;
+			case "교육과정":
+				ui.update_UI("courseCheck_UI");
+				break;
+			case "대체과목":
+				System.out.println("대체과목 버튼");
 				break;
 			}
 		}

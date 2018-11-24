@@ -107,7 +107,7 @@ public class schoolRegister extends JPanel {
 				System.out.println("성적관리 버튼");
 				break;
 			case "교과관리":
-				System.out.println("교과관리 버튼");
+				ui.update_UI("curriculum_UI");
 				break;
 			case "수강관리":
 				System.out.println("수강관리 버튼");

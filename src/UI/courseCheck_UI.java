@@ -17,12 +17,12 @@ import javax.swing.JTextField;
 import People.Student;
 import schoolRegister.checkInfo;
 
-public class checkInfo_UI extends JPanel {
+public class courseCheck_UI extends JPanel {
 	JButton curriculum_bt, register_bt, grade_bt, course_bt, re;
 	UI_Main ui;
-	JLabel la = new JLabel("No Mouse Event"), sID, sName, sAddress, sGender, sStatus, sBOD;
+	JLabel la = new JLabel("No Mouse Event");
 
-	public checkInfo_UI(UI_Main ui) {
+	public courseCheck_UI(UI_Main ui) {
 		this.ui = ui;
 		// 레이아웃 설정
 		setLayout(null);
@@ -40,38 +40,15 @@ public class checkInfo_UI extends JPanel {
 
 		////////////////////////////////////////////////////////////////////////////
 
-		// 학생 정보 받아오기
-		checkInfo ci = new checkInfo();
-		Student st = ui.getStudent();
-		if(st.getsID() == null) {
-			return;
-		}
-		String stuStr = ci.checkInfo(st.getsID());
-		String[] splitString = stuStr.split(" ");
+		// 교과 과정 이미지 가져오기
+		JLabel courseImage_01 = new JLabel("");
+		courseImage_01.setIcon(new ImageIcon("Resource/course_2018_01.jpg"));
+		courseImage_01.setBounds(100, 100, 800, 250);
+		
+		JLabel courseImage_02 = new JLabel("");
+		courseImage_02.setIcon(new ImageIcon("Resource/course_2018_02.jpg"));
+		courseImage_02.setBounds(100, 430, 800, 800);
 
-		sID = new JLabel(st.getsID());
-		sID.setBounds(480, 270, 450, 55);
-		sID.setForeground(Color.WHITE);
-
-		sName = new JLabel(splitString[0]);
-		sName.setBounds(480, 197, 450, 55);
-		sName.setForeground(Color.WHITE);
-
-		sAddress = new JLabel(splitString[2]);
-		sAddress.setBounds(480, 343, 450, 55);
-		sAddress.setForeground(Color.WHITE);
-
-		sGender = new JLabel(splitString[3]);
-		sGender.setBounds(480, 418, 450, 55);
-		sGender.setForeground(Color.WHITE);
-
-		sStatus = new JLabel(splitString[4]);
-		sStatus.setBounds(480, 490, 450, 55);
-		sStatus.setForeground(Color.WHITE);
-
-		sBOD = new JLabel(splitString[5]);
-		sBOD.setBounds(480, 565, 450, 55);
-		sBOD.setForeground(Color.WHITE);
 
 		// 교과관리 버튼 추가
 		curriculum_bt = new JButton("교과관리");
@@ -109,12 +86,6 @@ public class checkInfo_UI extends JPanel {
 		re.setBorderPainted(false);
 		re.setFocusPainted(false);
 
-		add(sID);
-		add(sName);
-		add(sAddress);
-		add(sGender);
-		add(sStatus);
-		add(sBOD);
 		add(re);
 		add(curriculum_bt);
 		add(register_bt);
@@ -122,6 +93,8 @@ public class checkInfo_UI extends JPanel {
 		add(course_bt);
 		add(la);
 		add(lblNewLabel);
+		add(courseImage_01);
+		add(courseImage_02);
 		curriculum_bt.addActionListener(new MyActionListener());
 		register_bt.addActionListener(new MyActionListener());
 		grade_bt.addActionListener(new MyActionListener());
@@ -146,7 +119,7 @@ public class checkInfo_UI extends JPanel {
 				System.out.println("수강관리 버튼");
 				break;
 			case "돌아가기":
-				ui.update_UI("schoolRegister");
+				ui.update_UI("curriculum_UI");
 				break;
 			}
 		}
