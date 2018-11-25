@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import People.Student;
+import curriculum.altCourseDAO;
 import schoolRegister.checkInfo;
 
 public class altCourse extends JPanel {
@@ -29,6 +30,7 @@ public class altCourse extends JPanel {
 	UI_Main ui;
 	JLabel la = new JLabel("No Mouse Event");
 	Object seletedMajor = "국어국문학과";
+	altCourseDAO altcoursedao = new altCourseDAO();
 
 	public altCourse(UI_Main ui) {
 		this.ui = ui;
@@ -36,7 +38,7 @@ public class altCourse extends JPanel {
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Resource/curriculum.png"));
+		lblNewLabel.setIcon(new ImageIcon("Resource/altCourse.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
 
 		////////////////////////////////////////////////////////////////////////// 좌표볼려구
@@ -47,10 +49,12 @@ public class altCourse extends JPanel {
 		la.setForeground(Color.WHITE);
 
 		////////////////////////////////////////////////////////////////////////////
-
-		// 대체과목 이미지 가져오기========================================
+		// altCourseDAO(대체과목) 접근, 데이터 가져옴
+		ImageIcon[] altcourseList = altcoursedao.altCourseDAO();
+		
+		// 대체과목 이미지 출력========================================
 		JLabel altCourseImage = new JLabel("");
-		altCourseImage.setIcon(new ImageIcon("Resource/altCourse/korean.JPG"));
+		altCourseImage.setIcon(altcourseList[0]);
 		altCourseImage.setBounds(205, 190, 580, 440);
 		altCourseImage.setBorder(javax.swing.BorderFactory.createLineBorder(Color.red));
 		// 교과 과정 이미지 가져오기========================================
@@ -78,43 +82,43 @@ public class altCourse extends JPanel {
 				// TODO Auto-generated method stub
 				if(seletedMajor.equals("국어국문학과")) {
 					System.out.println("국어국문학과");
-					altCourseImage.setIcon(new ImageIcon("Resource/altCourse/korean.JPG"));
+					altCourseImage.setIcon(altcourseList[0]);
 				}
 				else if(seletedMajor.equals("영어영문학과")) {
 					System.out.println("영어영문학과");
-					altCourseImage.setIcon(new ImageIcon("Resource/altCourse/english.JPG"));
+					altCourseImage.setIcon(altcourseList[1]);
 				}
 				else if(seletedMajor.equals("철학과")) {
 					System.out.println("철학과");
-					altCourseImage.setIcon(new ImageIcon("Resource/altCourse/fe.JPG"));
+					altCourseImage.setIcon(altcourseList[2]);
 				}
 				else if(seletedMajor.equals("심리학과")) {
 					System.out.println("심리학과");
-					altCourseImage.setIcon(new ImageIcon("Resource/altCourse/mind.JPG"));
+					altCourseImage.setIcon(altcourseList[3]);
 				}
 				else if(seletedMajor.equals("무역학과")) {
 					System.out.println("무역학과");
-					altCourseImage.setIcon(new ImageIcon("Resource/altCourse/trade.JPG"));
+					altCourseImage.setIcon(altcourseList[4]);
 				}
 				else if(seletedMajor.equals("건축공학과")) {
 					System.out.println("건축공학과");
-					altCourseImage.setIcon(new ImageIcon("Resource/altCourse/buliding.JPG"));
+					altCourseImage.setIcon(altcourseList[5]);
 				}
 				else if(seletedMajor.equals("환경공학과")) {
 					System.out.println("환경공학과");
-					altCourseImage.setIcon(new ImageIcon("Resource/altCourse/green.JPG"));
+					altCourseImage.setIcon(altcourseList[6]);
 				}
 				else if(seletedMajor.equals("기계공학부")) {
 					System.out.println("기계공학부");
-					altCourseImage.setIcon(new ImageIcon("Resource/altCourse/mechanical.JPG"));
+					altCourseImage.setIcon(altcourseList[7]);
 				}
 				else if(seletedMajor.equals("토목공학과")) {
 					System.out.println("토목공학과");
-					altCourseImage.setIcon(new ImageIcon("Resource/altCourse/ground.JPG"));
+					altCourseImage.setIcon(altcourseList[8]);
 				}
 				else if(seletedMajor.equals("컴퓨터공학과")) {
 					System.out.println("컴퓨터공학과");
-					altCourseImage.setIcon(new ImageIcon("Resource/altCourse/computer.JPG"));
+					altCourseImage.setIcon(altcourseList[9]);
 				}
 			}
 		});
