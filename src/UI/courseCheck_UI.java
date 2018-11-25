@@ -9,9 +9,14 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -28,8 +33,8 @@ public class courseCheck_UI extends JPanel {
 	JButton curriculum_bt, register_bt, grade_bt, course_bt, re;
 	UI_Main ui;
 	JLabel la = new JLabel("No Mouse Event");
-	Object seletedYear = null;
-	Object seletedMajor = null;
+	Object seletedYear = "2018";
+	Object seletedMajor = "국어국문학과";
 
 	public courseCheck_UI(UI_Main ui) {
 		this.ui = ui;
@@ -68,7 +73,7 @@ public class courseCheck_UI extends JPanel {
 		
 		// 전공 선택 콤보 박스 생성 및 추가
 		JComboBox majorCombo = new JComboBox();
-		majorCombo.setModel(new DefaultComboBoxModel(major));
+		majorCombo.setModel(new DefaultComboBoxModel(major));	
 		panel.add(majorCombo);
 		
 		// 년도 선택 컴보 박스 생성 및 추가
@@ -85,7 +90,8 @@ public class courseCheck_UI extends JPanel {
 				// TODO Auto-generated method stub
 				if(seletedYear.equals("2018")) {
 					if(seletedMajor.equals("국어국문학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/korean/2018.JPG"));
+						ImageIcon img = new ImageIcon("Resource/curriculum/korean/2018.JPG");
+						courseImage.setIcon(img);						
 					}
 					else if(seletedMajor.equals("영어영문학과")) {
 						courseImage.setIcon(new ImageIcon("Resource/curriculum/english/2018.JPG"));
@@ -362,8 +368,6 @@ public class courseCheck_UI extends JPanel {
 		panel.add(courseYearCombo);
 		add(courseImage);
 		add(lblNewLabel);
-		
-		
 		
 		curriculum_bt.addActionListener(new MyActionListener());
 		register_bt.addActionListener(new MyActionListener());
