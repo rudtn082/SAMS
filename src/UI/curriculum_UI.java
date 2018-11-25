@@ -26,7 +26,7 @@ public class curriculum_UI extends JPanel  {
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("교과 관리");
-		lblNewLabel.setIcon(new ImageIcon("Resource/schoolRegister.png"));
+		lblNewLabel.setIcon(new ImageIcon("Resource/curriculum.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
 
 		////////////////////////////////////////////////////////////////////////// 좌표볼려구
@@ -72,7 +72,7 @@ public class curriculum_UI extends JPanel  {
 		subCheck_bt = new JButton("교과목");
 		subCheck_bt.setBackground(new Color(114, 137, 218));
 		subCheck_bt.setForeground(Color.WHITE);
-		subCheck_bt.setBounds(100, 280, 400, 60);
+		subCheck_bt.setBounds(50, 280, 355, 60);
 		subCheck_bt.setBorderPainted(false);
 		subCheck_bt.setFocusPainted(false);	
 		
@@ -80,7 +80,7 @@ public class curriculum_UI extends JPanel  {
 		scheduleCheck_bt = new JButton("강의 시간표");
 		scheduleCheck_bt.setBackground(new Color(114, 137, 218));
 		scheduleCheck_bt.setForeground(Color.WHITE);
-		scheduleCheck_bt.setBounds(570, 280, 400, 60);
+		scheduleCheck_bt.setBounds(520, 280, 355, 60);
 		scheduleCheck_bt.setBorderPainted(false);
 		scheduleCheck_bt.setFocusPainted(false);	
 		
@@ -88,7 +88,7 @@ public class curriculum_UI extends JPanel  {
 		courseCheck_bt = new JButton("교육과정");
 		courseCheck_bt.setBackground(new Color(114, 137, 218));
 		courseCheck_bt.setForeground(Color.WHITE);
-		courseCheck_bt.setBounds(100, 530, 400, 60);
+		courseCheck_bt.setBounds(50, 530, 355, 60);
 		courseCheck_bt.setBorderPainted(false);
 		courseCheck_bt.setFocusPainted(false);	
 		
@@ -96,7 +96,7 @@ public class curriculum_UI extends JPanel  {
 		altCourse_bt = new JButton("대체과목");
 		altCourse_bt.setBackground(new Color(114, 137, 218));
 		altCourse_bt.setForeground(Color.WHITE);
-		altCourse_bt.setBounds(570, 530, 400, 60);
+		altCourse_bt.setBounds(520, 530, 355, 60);
 		altCourse_bt.setBorderPainted(false);
 		altCourse_bt.setFocusPainted(false);	
 		
