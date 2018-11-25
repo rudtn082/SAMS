@@ -21,11 +21,11 @@ public class UI_Main extends JFrame {
 	}
 
 	public void update_UI(String panelName) {
-		schoolRegister schoolRegister = new schoolRegister(this);
-		register_UI register_UI = new register_UI(this);
-		checkInfo_UI checkInfo_UI = new checkInfo_UI(this);
-		Main_Menu_Student Main_Menu_Student = new Main_Menu_Student(this);
 		Main_Menu_admin Main_Menu_admin = new Main_Menu_admin(this);
+		register_UI register_UI = new register_UI(this);
+		schoolRegister schoolRegister = new schoolRegister(this);
+		Main_Menu_Student Main_Menu_Student = new Main_Menu_Student(this);
+		checkInfo_UI checkInfo_UI = new checkInfo_UI(this);
 		switch(panelName) {
 		case "Login":
 			getContentPane().removeAll();

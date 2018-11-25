@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 import People.*;
 import SAMS.Main;
 
-public class Login extends JPanel {
+public class Login extends JPanel{
 	ArrayList<String> array = new ArrayList<String>(); // 파일 읽은 값을 저장하는 arraylist
 	JTextField loginTextField;
 	JPasswordField passwordField;
@@ -38,35 +38,36 @@ public class Login extends JPanel {
 		this.ui = ui;
 		// 레이아웃 설정
 		setLayout(null);
-
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Resource/login.png"));
-		lblNewLabel.setBounds(0, 0, 1024, 768);
+		
+		JLabel lblNewLabel = new JLabel(""); 
+	    lblNewLabel.setIcon(new ImageIcon("Resource/login.png")); 
+	    lblNewLabel.setBounds(0, 0, 1024, 768);
+	
 
 		// 아이디 필드
-		loginTextField = new JTextField(10);
+		loginTextField = new JTextField(10);	
 		loginTextField.setBounds(435, 260, 400, 60);
-		loginTextField.setOpaque(false);
+		loginTextField.setOpaque(false);		
 		loginTextField.setForeground(Color.WHITE);
 		loginTextField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		loginTextField.setCaretColor(Color.white);
-
+		
 		// 패스워드 필드
 		passwordField = new JPasswordField(10);
 		passwordField.setBounds(435, 415, 400, 60);
-		passwordField.setOpaque(false);
+		passwordField.setOpaque(false);		
 		passwordField.setForeground(Color.WHITE);
 		passwordField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		passwordField.setCaretColor(Color.white);
-
+		
 		// 로그인버튼 추가
 		bt = new JButton("로그인");
 		bt.setBackground(new Color(114, 137, 218));
 		bt.setForeground(Color.WHITE);
 		bt.setBounds(435, 500, 400, 60);
 		bt.setBorderPainted(false);
-		bt.setFocusPainted(false);
-
+		bt.setFocusPainted(false);	
+		
 		add(loginTextField);
 		add(passwordField);
 		add(bt);
@@ -80,22 +81,22 @@ public class Login extends JPanel {
 			Admin admin = new Admin();
 			Student stu = new Student();
 			// admin입력했을 때
-			if (loginTextField.getText().equals(admin.getID())) {
-				if (String.valueOf(passwordField.getPassword()).equals(admin.getPW())) {
+			if(loginTextField.getText().equals(admin.getID())) {
+				if(String.valueOf(passwordField.getPassword()).equals(admin.getPW())) {
 					ui.update_UI("Main_Menu_admin");
 				}
 			}
 			// 학생이 입력했을 때
 			else {
 				register_read(); // 파일을 먼저 읽어온다.
-				if (array.isEmpty() == false) {
+				if (array.isEmpty() == false)  {
 					for (int i = 0; i < array.size(); i++) {
 						String[] splitString = array.get(i).split(" ");
 						// 동일한 학번이 있으면
 						if (loginTextField.getText().equals(splitString[1])) {
 							for (int j = 0; j < array.size(); j++) {
 								String[] splitString2 = array.get(j).split(" ");
-								if (passwordField.getText().equals(splitString2[5])) {
+								if(passwordField.getText().equals(splitString2[5])) {
 									// 학생 클래스 생성 및 UI변경
 									ui.setStudent(loginTextField.getText(), splitString2[0]);
 									ui.update_UI("Main_Menu_Student");
@@ -111,6 +112,7 @@ public class Login extends JPanel {
 			}
 		}
 	}
+	
 
 	// 파일 읽어오기 함수(학생정보)
 	public void register_read() {

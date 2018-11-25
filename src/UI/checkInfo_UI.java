@@ -43,9 +43,6 @@ public class checkInfo_UI extends JPanel {
 		// 학생 정보 받아오기
 		checkInfo ci = new checkInfo();
 		Student st = ui.getStudent();
-		if(st.getsID() == null) {
-			return;
-		}
 		String stuStr = ci.checkInfo(st.getsID());
 		String[] splitString = stuStr.split(" ");
 
