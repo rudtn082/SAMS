@@ -7,26 +7,25 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import UI.schoolRegister.MyActionListener;
-import UI.schoolRegister.MyMouseListener;
-
-public class curriculum_UI extends JPanel  {
-	JButton curriculum_bt, register_bt, grade_bt, course_bt, subCheck_bt, scheduleCheck_bt, courseCheck_bt, altCourse_bt;
+public class Subject_UI extends JPanel {
+	JButton curriculum_bt, register_bt, grade_bt, course_bt;
 	UI_Main ui;
 	JLabel la = new JLabel("No Mouse Event");
 
-	public curriculum_UI(UI_Main ui) {
+	public Subject_UI(UI_Main ui) {
 		this.ui = ui;
 		// 레이아웃 설정
 		setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("교과 관리");
-		lblNewLabel.setIcon(new ImageIcon("Resource/curriculum.png"));
+		JLabel lblNewLabel = new JLabel("교과목");
+		lblNewLabel.setIcon(new ImageIcon("Resource/subCheck.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
 
 		////////////////////////////////////////////////////////////////////////// 좌표볼려구
@@ -36,8 +35,20 @@ public class curriculum_UI extends JPanel  {
 		la.setBounds(0, 0, 200, 30);
 		la.setForeground(Color.WHITE);
 
-		// 메뉴 바  버튼 들 //
-
+		// 콤보 박스 ===============================================
+		JPanel panel = new JPanel();
+		panel.setBounds(750, 130, 110, 70);
+		panel.setOpaque(false);
+		panel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.blue));
+		
+		// 콤보 박스 내 선택 가능 메뉴 선언
+		String[] major = {"국어국문학과","영어영문학과","철학과","심리학과","무역학과","건축공학과","환경공학과","기계공학부","토목공학과","컴퓨터공학과"};
+		
+		// 전공 선택 콤보 박스 생성 및 추가
+		JComboBox majorCombo = new JComboBox();
+		majorCombo.setModel(new DefaultComboBoxModel(major));
+		panel.add(majorCombo);
+				
 		// 교과관리 버튼 추가
 		curriculum_bt = new JButton("교과관리");
 		curriculum_bt.setContentAreaFilled(false);
@@ -66,39 +77,6 @@ public class curriculum_UI extends JPanel  {
 		course_bt.setForeground(Color.WHITE);
 		course_bt.setBounds(770, 23, 200, 55);
 
-		// 교과 관리 버튼 들 //
-
-		// 교과목(조회) 버튼 추가
-		subCheck_bt = new JButton("교과목");
-		subCheck_bt.setBackground(new Color(114, 137, 218));
-		subCheck_bt.setForeground(Color.WHITE);
-		subCheck_bt.setBounds(50, 280, 355, 60);
-		subCheck_bt.setBorderPainted(false);
-		subCheck_bt.setFocusPainted(false);	
-		
-		// 강의 시간표 버튼 추가
-		scheduleCheck_bt = new JButton("강의 시간표");
-		scheduleCheck_bt.setBackground(new Color(114, 137, 218));
-		scheduleCheck_bt.setForeground(Color.WHITE);
-		scheduleCheck_bt.setBounds(520, 280, 355, 60);
-		scheduleCheck_bt.setBorderPainted(false);
-		scheduleCheck_bt.setFocusPainted(false);	
-		
-		// 교육 과정 버튼 추가
-		courseCheck_bt = new JButton("교육과정");
-		courseCheck_bt.setBackground(new Color(114, 137, 218));
-		courseCheck_bt.setForeground(Color.WHITE);
-		courseCheck_bt.setBounds(50, 530, 355, 60);
-		courseCheck_bt.setBorderPainted(false);
-		courseCheck_bt.setFocusPainted(false);	
-		
-		// 대체 과정 버튼 추가
-		altCourse_bt = new JButton("대체과목");
-		altCourse_bt.setBackground(new Color(114, 137, 218));
-		altCourse_bt.setForeground(Color.WHITE);
-		altCourse_bt.setBounds(520, 530, 355, 60);
-		altCourse_bt.setBorderPainted(false);
-		altCourse_bt.setFocusPainted(false);	
 		
 		// 메뉴바
 		add(curriculum_bt);
@@ -106,23 +84,15 @@ public class curriculum_UI extends JPanel  {
 		add(grade_bt);
 		add(course_bt);
 		add(la);
-		// 교과 관리
-		add(subCheck_bt);
-		add(scheduleCheck_bt);
-		add(courseCheck_bt);
-		add(altCourse_bt);
 		
 		// 메뉴 바
+		add(panel);
+		panel.add(majorCombo);
 		add(lblNewLabel);
 		curriculum_bt.addActionListener(new MyActionListener());
 		register_bt.addActionListener(new MyActionListener());
 		grade_bt.addActionListener(new MyActionListener());
 		course_bt.addActionListener(new MyActionListener());
-		// 교과 관리
-		subCheck_bt.addActionListener(new MyActionListener());
-		scheduleCheck_bt.addActionListener(new MyActionListener());
-		courseCheck_bt.addActionListener(new MyActionListener());
-		altCourse_bt.addActionListener(new MyActionListener());
 	}
 
 	class MyActionListener implements ActionListener {
@@ -153,7 +123,7 @@ public class curriculum_UI extends JPanel  {
 				ui.update_UI("courseCheck_UI");
 				break;
 			case "대체과목":
-				ui.update_UI("altCourse");
+				System.out.println("대체과목 버튼");
 				break;
 			}
 		}
@@ -195,4 +165,5 @@ public class curriculum_UI extends JPanel  {
 		}
 
 	}
+
 }
