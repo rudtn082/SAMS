@@ -27,6 +27,7 @@ public class UI_Main extends JFrame {
 		Main_Menu_Student Main_Menu_Student = new Main_Menu_Student(this);
 		Main_Menu_admin Main_Menu_admin = new Main_Menu_admin(this);
 		curriculum_UI curriculum_UI = new curriculum_UI(this);
+		courseCheck_UI courseCheck_UI = new courseCheck_UI(this); 
 		switch(panelName) {
 		case "Login":
 			getContentPane().removeAll();
@@ -67,6 +68,12 @@ public class UI_Main extends JFrame {
 		case "curriculum_UI":
 			getContentPane().removeAll();
 			getContentPane().add(curriculum_UI);
+			revalidate();
+			repaint();
+			break;
+		case "courseCheck_UI":
+			getContentPane().removeAll();
+			getContentPane().add(courseCheck_UI);
 			revalidate();
 			repaint();
 			break;
