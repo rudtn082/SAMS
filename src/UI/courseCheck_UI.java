@@ -28,6 +28,7 @@ import javax.swing.JTextField;
 
 import People.Student;
 import schoolRegister.checkInfo;
+import curriculum.courseCheckDAO;
 
 public class courseCheck_UI extends JPanel {
 	JButton curriculum_bt, register_bt, grade_bt, course_bt, re;
@@ -35,6 +36,7 @@ public class courseCheck_UI extends JPanel {
 	JLabel la = new JLabel("No Mouse Event");
 	Object seletedYear = "2018";
 	Object seletedMajor = "국어국문학과";
+	courseCheckDAO courseCheck = new courseCheckDAO();
 
 	public courseCheck_UI(UI_Main ui) {
 		this.ui = ui;
@@ -53,10 +55,13 @@ public class courseCheck_UI extends JPanel {
 		la.setForeground(Color.WHITE);
 
 		////////////////////////////////////////////////////////////////////////////
-
+		
+		// 교과 과정(courseCheck) DAO 접근, 데이터 가져오기
+		ImageIcon[][] courseList = courseCheck.courseCheckDAO();
+		
 		// 교과 과정 이미지 가져오기========================================
 		JLabel courseImage = new JLabel("");
-		courseImage.setIcon(new ImageIcon("Resource/curriculum/korean/2018.JPG"));
+		courseImage.setIcon(courseList[0][0]);
 		courseImage.setBounds(205, 190, 580, 440);
 		courseImage.setBorder(javax.swing.BorderFactory.createLineBorder(Color.red));
 		// 교과 과정 이미지 가져오기========================================
@@ -79,6 +84,7 @@ public class courseCheck_UI extends JPanel {
 		// 년도 선택 컴보 박스 생성 및 추가
 		JComboBox courseYearCombo = new JComboBox();
 		courseYearCombo.setModel(new DefaultComboBoxModel(courseYear));
+
 		
 		// 콤보 박스 년도 값 가져오기
 		courseYearCombo.addItemListener(new ItemListener() {
@@ -89,100 +95,100 @@ public class courseCheck_UI extends JPanel {
 				
 				// TODO Auto-generated method stub
 				if(seletedYear.equals("2018")) {
+					
 					if(seletedMajor.equals("국어국문학과")) {
-						ImageIcon img = new ImageIcon("Resource/curriculum/korean/2018.JPG");
-						courseImage.setIcon(img);						
+						courseImage.setIcon(courseList[0][0]);						
 					}
 					else if(seletedMajor.equals("영어영문학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/english/2018.JPG"));
+						courseImage.setIcon(courseList[0][1]);
 					}
 					else if(seletedMajor.equals("철학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/fe/2018.JPG"));
+						courseImage.setIcon(courseList[0][2]);
 					}
 					else if(seletedMajor.equals("심리학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mind/2018.JPG"));
+						courseImage.setIcon(courseList[0][3]);
 					}
 					else if(seletedMajor.equals("무역학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/trade/2018.JPG"));
+						courseImage.setIcon(courseList[0][4]);
 					}
 					else if(seletedMajor.equals("건축공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/buliding/2018.JPG"));
+						courseImage.setIcon(courseList[0][5]);
 					}
 					else if(seletedMajor.equals("환경공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/green/2018.JPG"));
+						courseImage.setIcon(courseList[0][6]);
 					}
 					else if(seletedMajor.equals("기계공학부")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mechanical/2018.JPG"));
+						courseImage.setIcon(courseList[0][7]);
 					}
 					else if(seletedMajor.equals("토목공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/ground/2018.JPG"));
+						courseImage.setIcon(courseList[0][8]);
 					}
 					else if(seletedMajor.equals("컴퓨터공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/computer/2018.JPG"));
+						courseImage.setIcon(courseList[0][9]);
 					}
 				}
 				else if(seletedYear.equals("2017")) {
 					if(seletedMajor.equals("국어국문학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/korean/2017.JPG"));
+						courseImage.setIcon(courseList[1][0]);
 					}
 					else if(seletedMajor.equals("영어영문학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/english/2017.JPG"));
+						courseImage.setIcon(courseList[1][1]);
 					}
 					else if(seletedMajor.equals("철학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/fe/2017.JPG"));
+						courseImage.setIcon(courseList[1][2]);
 					}
 					else if(seletedMajor.equals("심리학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mind/2017.JPG"));
+						courseImage.setIcon(courseList[1][3]);
 					}
 					else if(seletedMajor.equals("무역학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/trade/2017.JPG"));
+						courseImage.setIcon(courseList[1][4]);
 					}
 					else if(seletedMajor.equals("건축공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/buliding/2017.JPG"));
+						courseImage.setIcon(courseList[1][5]);
 					}
 					else if(seletedMajor.equals("환경공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/green/2017.JPG"));
+						courseImage.setIcon(courseList[1][6]);
 					}
 					else if(seletedMajor.equals("기계공학부")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mechanical/2017.JPG"));
+						courseImage.setIcon(courseList[1][7]);
 					}
 					else if(seletedMajor.equals("토목공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/ground/2017.JPG"));
+						courseImage.setIcon(courseList[1][8]);
 					}
 					else if(seletedMajor.equals("컴퓨터공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/computer/2017.JPG"));
+						courseImage.setIcon(courseList[1][9]);
 					}
 				}
 				else if(seletedYear.equals("2016")) {
 					if(seletedMajor.equals("국어국문학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/korean/2016.JPG"));
+						courseImage.setIcon(courseList[2][0]);
 					}
 					else if(seletedMajor.equals("영어영문학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/english/2016.JPG"));
+						courseImage.setIcon(courseList[2][1]);
 					}
 					else if(seletedMajor.equals("철학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/fe/2016.JPG"));
+						courseImage.setIcon(courseList[2][2]);
 					}
 					else if(seletedMajor.equals("심리학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mind/2016.JPG"));
+						courseImage.setIcon(courseList[2][3]);
 					}
 					else if(seletedMajor.equals("무역학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/trade/2016.JPG"));
+						courseImage.setIcon(courseList[2][4]);
 					}
 					else if(seletedMajor.equals("건축공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/buliding/2016.JPG"));
+						courseImage.setIcon(courseList[2][5]);
 					}
 					else if(seletedMajor.equals("환경공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/green/2016.JPG"));
+						courseImage.setIcon(courseList[2][6]);
 					}
 					else if(seletedMajor.equals("기계공학부")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mechanical/2016.JPG"));
+						courseImage.setIcon(courseList[2][7]);
 					}
 					else if(seletedMajor.equals("토목공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/ground/2016.JPG"));
+						courseImage.setIcon(courseList[2][8]);
 					}
 					else if(seletedMajor.equals("컴퓨터공학과")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/computer/2016.JPG"));
+						courseImage.setIcon(courseList[2][9]);
 					}
 				}
 			}
@@ -199,123 +205,123 @@ public class courseCheck_UI extends JPanel {
 					System.out.println("국어국문학과");
 					if (seletedYear.equals("2018")) {
 						System.out.println("국어국문학과/2018");
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/korean/2018.JPG"));
+						courseImage.setIcon(courseList[0][0]);
 					}
 					else if(seletedYear.equals("2017")) {
 						System.out.println("국어국문학과/2017");
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/korean/2017.JPG"));
+						courseImage.setIcon(courseList[1][0]);
 					}
 					else if(seletedYear.equals("2016")) {
 						System.out.println("국어국문학과/2016");
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/korean/2016.JPG"));
+						courseImage.setIcon(courseList[2][0]);
 					}
 				}
 				else if(seletedMajor.equals("영어영문학과")) {
 					System.out.println("영어영문학과");
 					if (seletedYear.equals("2018")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/english/2018.JPG"));
+						courseImage.setIcon(courseList[0][1]);
 					}
 					else if(seletedYear.equals("2017")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/english/2017.JPG"));
+						courseImage.setIcon(courseList[1][1]);
 					}
 					else if(seletedYear.equals("2016")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/english/2016.JPG"));
+						courseImage.setIcon(courseList[2][1]);
 					}
 				}
 				else if(seletedMajor.equals("철학과")) {
 					System.out.println("철학과");
 					if (seletedYear.equals("2018")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/fe/2018.JPG"));
+						courseImage.setIcon(courseList[0][2]);
 					}
 					else if(seletedYear.equals("2017")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/fe/2017.JPG"));
+						courseImage.setIcon(courseList[1][2]);
 					}
 					else if(seletedYear.equals("2016")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/fe/2016.JPG"));
+						courseImage.setIcon(courseList[2][2]);
 					}
 				}
 				else if(seletedMajor.equals("심리학과")) {
 					System.out.println("심리학과");
 					if (seletedYear.equals("2018")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mind/2018.JPG"));
+						courseImage.setIcon(courseList[0][3]);
 					}
 					else if(seletedYear.equals("2017")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mind/2017.JPG"));
+						courseImage.setIcon(courseList[1][3]);
 					}
 					else if(seletedYear.equals("2016")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mind/2016.JPG"));
+						courseImage.setIcon(courseList[2][3]);
 					}
 				}
 				else if(seletedMajor.equals("무역학과")) {
 					System.out.println("무역학과");
 					if (seletedYear.equals("2018")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/trade/2018.JPG"));
+						courseImage.setIcon(courseList[0][4]);
 					}
 					else if(seletedYear.equals("2017")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/trade/2017.JPG"));
+						courseImage.setIcon(courseList[1][4]);
 					}
 					else if(seletedYear.equals("2016")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/trade/2016.JPG"));
+						courseImage.setIcon(courseList[2][4]);
 					}
 				}
 				else if(seletedMajor.equals("건축공학과")) {
 					System.out.println("건축공학과");
 					if (seletedYear.equals("2018")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/buliding/2018.JPG"));
+						courseImage.setIcon(courseList[0][5]);
 					}
 					else if(seletedYear.equals("2017")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/buliding/2017.JPG"));
+						courseImage.setIcon(courseList[1][5]);
 					}
 					else if(seletedYear.equals("2016")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/buliding/2016.JPG"));
+						courseImage.setIcon(courseList[2][5]);
 					}
 				}
 				else if(seletedMajor.equals("환경공학과")) {
 					System.out.println("환경공학과");
 					if (seletedYear.equals("2018")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/green/2018.JPG"));
+						courseImage.setIcon(courseList[0][6]);
 					}
 					else if(seletedYear.equals("2017")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/green/2017.JPG"));
+						courseImage.setIcon(courseList[1][6]);
 					}
 					else if(seletedYear.equals("2016")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/green/2016.JPG"));
+						courseImage.setIcon(courseList[2][6]);
 					}
 				}
 				else if(seletedMajor.equals("기계공학부")) {
 					System.out.println("기계공학부");
 					if (seletedYear.equals("2018")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mechanical/2018.JPG"));
+						courseImage.setIcon(courseList[0][7]);
 					}
 					else if(seletedYear.equals("2017")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mechanical/2017.JPG"));
+						courseImage.setIcon(courseList[1][7]);
 					}
 					else if(seletedYear.equals("2016")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/mechanical/2016.JPG"));
+						courseImage.setIcon(courseList[2][7]);
 					}
 				}
 				else if(seletedMajor.equals("토목공학과")) {
 					System.out.println("토목공학과");
 					if (seletedYear.equals("2018")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/ground/2018.JPG"));
+						courseImage.setIcon(courseList[0][8]);
 					}
 					else if(seletedYear.equals("2017")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/ground/2017.JPG"));
+						courseImage.setIcon(courseList[1][8]);
 					}
 					else if(seletedYear.equals("2016")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/ground/2016.JPG"));
+						courseImage.setIcon(courseList[2][8]);
 					}
 				}
 				else if(seletedMajor.equals("컴퓨터공학과")) {
 					System.out.println("컴퓨터공학과");
 					if (seletedYear.equals("2018")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/computer/2018.JPG"));
+						courseImage.setIcon(courseList[0][9]);
 					}
 					else if(seletedYear.equals("2017")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/computer/2017.JPG"));
+						courseImage.setIcon(courseList[1][9]);
 					}
 					else if(seletedYear.equals("2016")) {
-						courseImage.setIcon(new ImageIcon("Resource/curriculum/computer/2016.JPG"));
+						courseImage.setIcon(courseList[2][9]);
 					}
 				}
 			}
@@ -399,41 +405,6 @@ public class courseCheck_UI extends JPanel {
 		}
 	}
 	
-	public class drawCourse extends JFrame {
-	    JScrollPane scrollPane;
-	    ImageIcon icon;
-	 
-	    public drawCourse() {
-	        icon = new ImageIcon("Resource/course_2018_01.JPG");
-	       
-	        //배경 Panel 생성후 컨텐츠페인으로 지정      
-	        JPanel background = new JPanel() {
-	            public void paintComponent(Graphics g) {
-	                // Approach 1: Dispaly image at at full size
-	                g.drawImage(icon.getImage(), 0, 0, null);
-	                // Approach 2: Scale image to size of component
-	                // Dimension d = getSize();
-	                // g.drawImage(icon.getImage(), 0, 0, d.width, d.height, null);
-	                // Approach 3: Fix the image position in the scroll pane
-	                // Point p = scrollPane.getViewport().getViewPosition();
-	                // g.drawImage(icon.getImage(), p.x, p.y, null);
-	                setOpaque(false); //그림을 표시하게 설정,투명하게 조절
-	                super.paintComponent(g);
-	            }
-	        };
-	       
-	        scrollPane = new JScrollPane(background);
-	        setContentPane(scrollPane);
-	    }
-	 
-	    public void main(String[] args) {
-	    	drawCourse frame = new drawCourse();
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        frame.setSize(300, 300);
-	        frame.setVisible(true);
-	    }
-	}
-
 	class MyMouseListener implements MouseListener, MouseMotionListener {
 
 		@Override

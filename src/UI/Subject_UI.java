@@ -1,8 +1,12 @@
 package UI;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -14,10 +18,14 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import curriculum.subCheckDAO;
+
 public class Subject_UI extends JPanel {
 	JButton curriculum_bt, register_bt, grade_bt, course_bt;
 	UI_Main ui;
 	JLabel la = new JLabel("No Mouse Event");
+	Object seletedMajor = "국어국문학과";
+	subCheckDAO subcheckdao = new subCheckDAO();
 
 	public Subject_UI(UI_Main ui) {
 		this.ui = ui;
@@ -34,6 +42,22 @@ public class Subject_UI extends JPanel {
 		addMouseMotionListener(new MyMouseListener());
 		la.setBounds(0, 0, 200, 30);
 		la.setForeground(Color.WHITE);
+		
+		// subCheckDAO(교과목) 접근, 데이터 가져옴
+		String[] subList = subcheckdao.subCheckDAO();
+		
+		// 교과목 출력
+		JLabel subListLabel = new JLabel("");
+		subListLabel.setText(subList[0]);
+		subListLabel.setFont(new Font("Serif", Font.BOLD, 20));
+		subListLabel.setOpaque(false);
+		subListLabel.setForeground(Color.white);
+		subListLabel.setSize(280, 400);
+		subListLabel.setLocation(400, 230);
+//		subListLabel.setBounds(400, 230, 700, 500);
+		GridBagConstraints constraints=new GridBagConstraints();
+		constraints.insets.left = 20;
+		subListLabel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.red));
 
 		// 콤보 박스 ===============================================
 		JPanel panel = new JPanel();
@@ -48,6 +72,58 @@ public class Subject_UI extends JPanel {
 		JComboBox majorCombo = new JComboBox();
 		majorCombo.setModel(new DefaultComboBoxModel(major));
 		panel.add(majorCombo);
+		
+		// 콤보 박스 리스너 
+		majorCombo.addItemListener(new ItemListener() {
+
+			@Override
+			public void itemStateChanged(ItemEvent ev) {
+				// TODO Auto-generated method stub
+				seletedMajor = ev.getItem();
+				
+				// TODO Auto-generated method stub
+				if(seletedMajor.equals("국어국문학과")) {
+					System.out.println("국어국문학과");
+					subListLabel.setText(subList[0]);
+				}
+				else if(seletedMajor.equals("영어영문학과")) {
+					System.out.println("영어영문학과");
+					subListLabel.setText(subList[1]);
+				}
+				else if(seletedMajor.equals("철학과")) {
+					System.out.println("철학과");
+					subListLabel.setText(subList[2]);
+				}
+				else if(seletedMajor.equals("심리학과")) {
+					System.out.println("심리학과");
+					subListLabel.setText(subList[3]);
+				}
+				else if(seletedMajor.equals("무역학과")) {
+					System.out.println("무역학과");
+					subListLabel.setText(subList[4]);
+				}
+				else if(seletedMajor.equals("건축공학과")) {
+					System.out.println("건축공학과");
+					subListLabel.setText(subList[5]);
+				}
+				else if(seletedMajor.equals("환경공학과")) {
+					System.out.println("환경공학과");
+					subListLabel.setText(subList[6]);
+				}
+				else if(seletedMajor.equals("기계공학부")) {
+					System.out.println("기계공학부");
+					subListLabel.setText(subList[7]);
+				}
+				else if(seletedMajor.equals("토목공학과")) {
+					System.out.println("토목공학과");
+					subListLabel.setText(subList[8]);
+				}
+				else if(seletedMajor.equals("컴퓨터공학과")) {
+					System.out.println("컴퓨터공학과");
+					subListLabel.setText(subList[9]);
+				}
+			}
+		});		
 				
 		// 교과관리 버튼 추가
 		curriculum_bt = new JButton("교과관리");
@@ -76,7 +152,6 @@ public class Subject_UI extends JPanel {
 		course_bt.setFocusPainted(false);
 		course_bt.setForeground(Color.WHITE);
 		course_bt.setBounds(770, 23, 200, 55);
-
 		
 		// 메뉴바
 		add(curriculum_bt);
@@ -88,6 +163,7 @@ public class Subject_UI extends JPanel {
 		// 메뉴 바
 		add(panel);
 		panel.add(majorCombo);
+		add(subListLabel, constraints);
 		add(lblNewLabel);
 		curriculum_bt.addActionListener(new MyActionListener());
 		register_bt.addActionListener(new MyActionListener());
@@ -111,19 +187,6 @@ public class Subject_UI extends JPanel {
 				break;
 			case "수강관리":
 				System.out.println("수강관리 버튼");
-				break;
-			// 교과 관리 버튼
-			case "교과목":
-				ui.update_UI("Subject_UI");
-				break;
-			case "강의 시간표":
-				System.out.println("강의 시간표 버튼");
-				break;
-			case "교육과정":
-				ui.update_UI("courseCheck_UI");
-				break;
-			case "대체과목":
-				System.out.println("대체과목 버튼");
 				break;
 			}
 		}
