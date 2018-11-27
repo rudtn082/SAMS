@@ -44,20 +44,22 @@ public class Subject_UI extends JPanel {
 		la.setForeground(Color.WHITE);
 		
 		// subCheckDAO(교과목) 접근, 데이터 가져옴
-		String[] subList = subcheckdao.subCheckDAO();
+		String[][] subList = subcheckdao.subCheckDAO();
+		
 		
 		// 교과목 출력
-		JLabel subListLabel = new JLabel("");
-		subListLabel.setText(subList[0]);
-		subListLabel.setFont(new Font("Serif", Font.BOLD, 20));
-		subListLabel.setOpaque(false);
-		subListLabel.setForeground(Color.white);
-		subListLabel.setSize(280, 400);
-		subListLabel.setLocation(400, 230);
-//		subListLabel.setBounds(400, 230, 700, 500);
-		GridBagConstraints constraints=new GridBagConstraints();
-		constraints.insets.left = 20;
-		subListLabel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.red));
+		int height = 230;
+		JLabel[] subListLabel = new JLabel[10];
+		for(int i=0; i<10; i++) {
+			subListLabel[i] = new JLabel("");
+			subListLabel[i].setFont(new Font("Serif", Font.BOLD, 20));
+			subListLabel[i].setOpaque(false);
+			subListLabel[i].setForeground(Color.white);
+			subListLabel[i].setSize(280 , 35);
+			subListLabel[i].setText(subList[0][i]);
+			subListLabel[i].setLocation(400, height + (36*i));
+			subListLabel[i].setBorder(javax.swing.BorderFactory.createLineBorder(Color.red));
+		}
 
 		// 콤보 박스 ===============================================
 		JPanel panel = new JPanel();
@@ -84,43 +86,63 @@ public class Subject_UI extends JPanel {
 				// TODO Auto-generated method stub
 				if(seletedMajor.equals("국어국문학과")) {
 					System.out.println("국어국문학과");
-					subListLabel.setText(subList[0]);
+					for(int i=0; i<10; i++) {
+						subListLabel[i].setText(subList[0][i]);
+					}
 				}
 				else if(seletedMajor.equals("영어영문학과")) {
 					System.out.println("영어영문학과");
-					subListLabel.setText(subList[1]);
+					for(int i=0; i<10; i++) {
+						subListLabel[i].setText(subList[1][i]);
+					}
 				}
 				else if(seletedMajor.equals("철학과")) {
 					System.out.println("철학과");
-					subListLabel.setText(subList[2]);
+					for(int i=0; i<10; i++) {
+						subListLabel[i].setText(subList[2][i]);
+					}
 				}
 				else if(seletedMajor.equals("심리학과")) {
 					System.out.println("심리학과");
-					subListLabel.setText(subList[3]);
+					for(int i=0; i<10; i++) {
+						subListLabel[i].setText(subList[3][i]);
+					}
 				}
 				else if(seletedMajor.equals("무역학과")) {
 					System.out.println("무역학과");
-					subListLabel.setText(subList[4]);
+					for(int i=0; i<10; i++) {
+						subListLabel[i].setText(subList[4][i]);
+					}
 				}
 				else if(seletedMajor.equals("건축공학과")) {
 					System.out.println("건축공학과");
-					subListLabel.setText(subList[5]);
+					for(int i=0; i<10; i++) {
+						subListLabel[i].setText(subList[5][i]);
+					}
 				}
 				else if(seletedMajor.equals("환경공학과")) {
 					System.out.println("환경공학과");
-					subListLabel.setText(subList[6]);
+					for(int i=0; i<10; i++) {
+						subListLabel[i].setText(subList[6][i]);
+					}
 				}
 				else if(seletedMajor.equals("기계공학부")) {
 					System.out.println("기계공학부");
-					subListLabel.setText(subList[7]);
+					for(int i=0; i<10; i++) {
+						subListLabel[i].setText(subList[7][i]);
+					}
 				}
 				else if(seletedMajor.equals("토목공학과")) {
 					System.out.println("토목공학과");
-					subListLabel.setText(subList[8]);
+					for(int i=0; i<10; i++) {
+						subListLabel[i].setText(subList[8][i]);
+					}
 				}
 				else if(seletedMajor.equals("컴퓨터공학과")) {
 					System.out.println("컴퓨터공학과");
-					subListLabel.setText(subList[9]);
+					for(int i=0; i<10; i++) {
+						subListLabel[i].setText(subList[9][i]);
+					}
 				}
 			}
 		});		
@@ -163,7 +185,9 @@ public class Subject_UI extends JPanel {
 		// 메뉴 바
 		add(panel);
 		panel.add(majorCombo);
-		add(subListLabel, constraints);
+		for(int i=0; i<10; i++) {
+			add(subListLabel[i]);
+		}
 		add(lblNewLabel);
 		curriculum_bt.addActionListener(new MyActionListener());
 		register_bt.addActionListener(new MyActionListener());
