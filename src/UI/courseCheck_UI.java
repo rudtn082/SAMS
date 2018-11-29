@@ -44,7 +44,7 @@ public class courseCheck_UI extends JPanel {
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Resource/curriculum.png"));
+		lblNewLabel.setIcon(new ImageIcon("Resource/courseCheck_UI.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
 
 		////////////////////////////////////////////////////////////////////////// 좌표볼려구
@@ -396,7 +396,7 @@ public class courseCheck_UI extends JPanel {
 				ui.update_UI("curriculum_UI");
 				break;
 			case "수강관리":
-				System.out.println("수강관리 버튼");
+				ui.update_UI("courseManagement_UI");
 				break;
 			case "돌아가기":
 				ui.update_UI("curriculum_UI");

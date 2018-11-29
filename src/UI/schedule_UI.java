@@ -23,23 +23,25 @@ import javax.swing.JTextField;
 
 import People.Student;
 import curriculum.altCourseDAO;
+import curriculum.scheduleCheckDAO;
 import schoolRegister.checkInfo;
 
-public class altCourse extends JPanel {
+public class schedule_UI extends JPanel {
 	JButton curriculum_bt, register_bt, grade_bt, course_bt, re;
 	UI_Main ui;
 	JLabel la = new JLabel("No Mouse Event");
-	Object seletedMajor = "국어국문학과";
-	altCourseDAO altcoursedao = new altCourseDAO();
+	scheduleCheckDAO schedulecheckdao = new scheduleCheckDAO();
 
-	public altCourse(UI_Main ui) {
+	public schedule_UI(UI_Main ui) {
 		this.ui = ui;
+		Student st = ui.getStudent();
+		String ID = st.getsID();
 		
 		// 레이아웃 설정
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Resource/altCourse.png"));
+		lblNewLabel.setIcon(new ImageIcon("Resource/schedule_UI.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
 
 		////////////////////////////////////////////////////////////////////////// 좌표볼려구
@@ -50,80 +52,15 @@ public class altCourse extends JPanel {
 		la.setForeground(Color.WHITE);
 
 		////////////////////////////////////////////////////////////////////////////
-		// altCourseDAO(대체과목) 접근, 데이터 가져옴
-		ImageIcon[] altcourseList = altcoursedao.altCourseDAO();
+		// scheduleCheckDAO(스케쥴) 접근, 데이터 가져옴
+		ImageIcon timeTable = schedulecheckdao.scheduleCheckDAO(ID);
 		
-		// 대체과목 이미지 출력========================================
-		JLabel altCourseImage = new JLabel("");
-		altCourseImage.setIcon(altcourseList[0]);
-		altCourseImage.setBounds(205, 190, 580, 440);
-		altCourseImage.setBorder(javax.swing.BorderFactory.createLineBorder(Color.red));
-		// 교과 과정 이미지 가져오기========================================
-		
-		// 콤보 박스 ===============================================
-		JPanel panel = new JPanel();
-		panel.setBounds(750, 102, 110, 70);
-		panel.setOpaque(false);
-		panel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.blue));
-		
-		// 콤보 박스 내 선택 가능 메뉴 선언 (전공)
-		String[] major = {"국어국문학과","영어영문학과","철학과","심리학과","무역학과","건축공학과","환경공학과","기계공학부","토목공학과","컴퓨터공학과"};
-		
-		// 전공 선택 콤보 박스 생성 및 추가
-		JComboBox majorCombo = new JComboBox();
-		majorCombo.setModel(new DefaultComboBoxModel(major));	
-//		panel.add(majorCombo);
-		
-		// 콤보 박스 전공 값 가져오기
-		majorCombo.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent ev) {
-				seletedMajor = ev.getItem();
-
-				// TODO Auto-generated method stub
-				if(seletedMajor.equals("국어국문학과")) {
-					System.out.println("국어국문학과");
-					altCourseImage.setIcon(altcourseList[0]);
-				}
-				else if(seletedMajor.equals("영어영문학과")) {
-					System.out.println("영어영문학과");
-					altCourseImage.setIcon(altcourseList[1]);
-				}
-				else if(seletedMajor.equals("철학과")) {
-					System.out.println("철학과");
-					altCourseImage.setIcon(altcourseList[2]);
-				}
-				else if(seletedMajor.equals("심리학과")) {
-					System.out.println("심리학과");
-					altCourseImage.setIcon(altcourseList[3]);
-				}
-				else if(seletedMajor.equals("무역학과")) {
-					System.out.println("무역학과");
-					altCourseImage.setIcon(altcourseList[4]);
-				}
-				else if(seletedMajor.equals("건축공학과")) {
-					System.out.println("건축공학과");
-					altCourseImage.setIcon(altcourseList[5]);
-				}
-				else if(seletedMajor.equals("환경공학과")) {
-					System.out.println("환경공학과");
-					altCourseImage.setIcon(altcourseList[6]);
-				}
-				else if(seletedMajor.equals("기계공학부")) {
-					System.out.println("기계공학부");
-					altCourseImage.setIcon(altcourseList[7]);
-				}
-				else if(seletedMajor.equals("토목공학과")) {
-					System.out.println("토목공학과");
-					altCourseImage.setIcon(altcourseList[8]);
-				}
-				else if(seletedMajor.equals("컴퓨터공학과")) {
-					System.out.println("컴퓨터공학과");
-					altCourseImage.setIcon(altcourseList[9]);
-				}
-			}
-		});
-		// 콤보 박스 ====================================================
+		// 시간표 이미지 출력========================================
+		JLabel timeTableLabel = new JLabel("");
+		timeTableLabel.setIcon(timeTable);
+		timeTableLabel.setBounds(205, 190, 580, 440);
+		timeTableLabel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.red));
+			
 		
 		// 교과관리 버튼 추가
 		curriculum_bt = new JButton("교과관리");
@@ -167,10 +104,9 @@ public class altCourse extends JPanel {
 		add(grade_bt);
 		add(course_bt);
 		add(la);
-		add(panel);
-		panel.add(majorCombo);
-		add(altCourseImage);
-		add(lblNewLabel);		
+		add(timeTableLabel);
+		add(lblNewLabel);
+		
 		
 		curriculum_bt.addActionListener(new MyActionListener());
 		register_bt.addActionListener(new MyActionListener());

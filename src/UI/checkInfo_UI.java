@@ -143,7 +143,7 @@ public class checkInfo_UI extends JPanel {
 				ui.update_UI("curriculum_UI");
 				break;
 			case "수강관리":
-				System.out.println("수강관리 버튼");
+				ui.update_UI("courseManagement_UI");
 				break;
 			case "돌아가기":
 				ui.update_UI("schoolRegister");

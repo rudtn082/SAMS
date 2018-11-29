@@ -140,14 +140,14 @@ public class curriculum_UI extends JPanel  {
 				ui.update_UI("curriculum_UI");
 				break;
 			case "수강관리":
-				System.out.println("수강관리 버튼");
+				ui.update_UI("courseManagement_UI");
 				break;
 			// 교과 관리 버튼
-			case "교과목":
+			case "교과목":	
 				ui.update_UI("Subject_UI");
 				break;
 			case "강의 시간표":
-				System.out.println("강의 시간표 버튼");
+				ui.update_UI("schedule_UI");
 				break;
 			case "교육과정":
 				ui.update_UI("courseCheck_UI");
