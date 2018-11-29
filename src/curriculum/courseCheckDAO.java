@@ -12,7 +12,6 @@ public class courseCheckDAO {
 			for(int j = 0; j<10; j++) {
 				courseList[i][j] = new ImageIcon("Resource/curriculum/" + major[j] + "/" + year[i] + ".JPG");
 			}
-			
 		}
 		return courseList;
 	}

@@ -101,7 +101,7 @@ public class Main_Menu_Student extends JPanel{
 				ui.update_UI("curriculum_UI");
 				break;
 			case "수강관리":
-				System.out.println("수강관리 버튼");
+				ui.update_UI("courseManagement_UI");
 				break;
 			}
 		}

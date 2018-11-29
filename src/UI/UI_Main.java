@@ -30,6 +30,8 @@ public class UI_Main extends JFrame {
 		courseCheck_UI courseCheck_UI = new courseCheck_UI(this); 
 		altCourse altCourse = new altCourse(this);
 		Subject_UI Subject_UI = new Subject_UI(this);
+		courseManagement_UI courseManagement_UI = new courseManagement_UI(this);
+		schedule_UI schedule_UI = new schedule_UI(this);
 		switch(panelName) {
 		case "Login":
 			getContentPane().removeAll();
@@ -88,6 +90,18 @@ public class UI_Main extends JFrame {
 		case "Subject_UI":
 			getContentPane().removeAll();
 			getContentPane().add(Subject_UI);
+			revalidate();
+			repaint();
+			break;
+		case "courseManagement_UI":
+			getContentPane().removeAll();
+			getContentPane().add(courseManagement_UI);
+			revalidate();
+			repaint();
+			break;
+		case "schedule_UI":
+			getContentPane().removeAll();
+			getContentPane().add(schedule_UI);
 			revalidate();
 			repaint();
 			break;

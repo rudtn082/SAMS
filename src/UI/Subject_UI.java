@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import People.Student;
 import curriculum.subCheckDAO;
 
 public class Subject_UI extends JPanel {
@@ -29,6 +30,7 @@ public class Subject_UI extends JPanel {
 
 	public Subject_UI(UI_Main ui) {
 		this.ui = ui;
+		
 		// 레이아웃 설정
 		setLayout(null);
 
@@ -210,7 +212,7 @@ public class Subject_UI extends JPanel {
 				ui.update_UI("curriculum_UI");
 				break;
 			case "수강관리":
-				System.out.println("수강관리 버튼");
+				ui.update_UI("courseManagement_UI");
 				break;
 			}
 		}
