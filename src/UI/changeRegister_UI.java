@@ -22,10 +22,9 @@ public class changeRegister_UI extends JPanel {
 	Student st;
 	JButton curriculum_bt, register_bt, grade_bt, course_bt, ok, cancel;
 	UI_Main ui;
-	JLabel la = new JLabel("No Mouse Event");
 	JLabel Lname, Laddress, Lgender, Cname, Caddress, Cgender;
 	JTextField namefield, addressfield, genderfield;
-	
+
 	public changeRegister_UI(UI_Main ui) {
 		this.ui = ui;
 		// 레이아웃 설정
@@ -34,15 +33,6 @@ public class changeRegister_UI extends JPanel {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("Resource/changeRegister.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
-
-		////////////////////////////////////////////////////////////////////////// 좌표볼려구
-
-		addMouseListener(new MyMouseListener());
-		addMouseMotionListener(new MyMouseListener());
-		la.setBounds(0, 0, 200, 30);
-		la.setForeground(Color.WHITE);
-
-		////////////////////////////////////////////////////////////////////////////
 
 		// 학생 정보 받아오기
 		checkInfo ci = new checkInfo();
@@ -61,12 +51,12 @@ public class changeRegister_UI extends JPanel {
 		Laddress = new JLabel(splitString[2]);
 		Laddress.setBounds(171, 353, 200, 30);
 		Laddress.setForeground(Color.GRAY);
-	
+
 		Lgender = new JLabel(splitString[3]);
 		Lgender.setBounds(220, 525, 200, 30);
 		Lgender.setForeground(Color.GRAY);
 		// 변경 전 내용 출력
-		
+
 		// 이름 필드
 		namefield = new JTextField(10);
 		namefield.setBounds(105, 232, 400, 60);
@@ -90,7 +80,7 @@ public class changeRegister_UI extends JPanel {
 		genderfield.setForeground(Color.WHITE);
 		genderfield.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		genderfield.setCaretColor(Color.white);
-		
+
 		// 교과관리 버튼 추가
 		curriculum_bt = new JButton("교과관리");
 		curriculum_bt.setContentAreaFilled(false);
@@ -145,7 +135,6 @@ public class changeRegister_UI extends JPanel {
 		add(register_bt);
 		add(grade_bt);
 		add(course_bt);
-		add(la);
 		add(cancel);
 		add(ok);
 		add(lblNewLabel);
@@ -175,32 +164,23 @@ public class changeRegister_UI extends JPanel {
 				break;
 			case "저장":
 				// 이름 예외처리
-				if (namefield.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "이름을 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
-					break;
-				} else {
+				if (!namefield.getText().isEmpty()) {
 					if (isStringDouble(namefield.getText()) == true) {
 						JOptionPane.showMessageDialog(null, "이름은 글자로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 						break;
 					}
 				}
-				
+
 				// 주소 예외처리
-				if (addressfield.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "주소를 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
-					break;
-				} else {
+				if (!addressfield.getText().isEmpty()) {
 					if (isStringDouble(addressfield.getText()) == true) {
 						JOptionPane.showMessageDialog(null, "주소는 글자로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 						break;
 					}
 				}
-				
+
 				// 성별 예외처리
-				if (genderfield.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "성별을 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
-					break;
-				} else {
+				if (!genderfield.getText().isEmpty()) {
 					if (isStringDouble(genderfield.getText()) == true) {
 						JOptionPane.showMessageDialog(null, "성별은 글자로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 						break;
@@ -213,10 +193,11 @@ public class changeRegister_UI extends JPanel {
 						}
 					}
 				}
+
 				// 학적 변경
 				changeRegister creg = new changeRegister();
-				String message = creg.changeInfo(Integer.parseInt(st.getsID()), namefield.getText(), addressfield.getText(),
-						genderfield.getText());
+				String message = creg.changeInfo(Integer.parseInt(st.getsID()), namefield.getText(),
+						addressfield.getText(), genderfield.getText());
 				JOptionPane.showMessageDialog(null, message, "입력 결과", JOptionPane.INFORMATION_MESSAGE);
 				break;
 
@@ -225,7 +206,7 @@ public class changeRegister_UI extends JPanel {
 			}
 		}
 	}
-	
+
 	public boolean isStringDouble(String s) {
 		try {
 			Double.parseDouble(s);
@@ -234,42 +215,4 @@ public class changeRegister_UI extends JPanel {
 			return false;
 		}
 	}
-
-	class MyMouseListener implements MouseListener, MouseMotionListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			la.setText("MouseClicked(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			la.setText("MousePressed(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			la.setText("MouseReleased(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseDragged(MouseEvent e) {
-			la.setText("MouseDragged(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseMoved(MouseEvent e) {
-			la.setText("MouseMoved(" + e.getX() + "," + e.getY() + ")");
-		}
-
-	}
-
 }
