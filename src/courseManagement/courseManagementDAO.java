@@ -11,9 +11,8 @@ import javax.swing.ImageIcon;
 import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
 
 public class courseManagementDAO {
-	
 
-	
+	// 수강 신청 버튼 눌렀을 때
 	public String signUp(String ID, int courseNum) {
 		String Y = "Y";
 		String N = "N";
@@ -47,6 +46,7 @@ public class courseManagementDAO {
 		return line;
 	}
 	
+	// 해당 학생의 수강 현황 txt 파일 업데이트
 	public void writeCourseStudentNumber(String ID, int courseNum, String check) {
 		String[] line = {""};
 		String toWrite = "";
@@ -72,5 +72,11 @@ public class courseManagementDAO {
 		} catch (IOException e) {
 			System.out.println(e);
 		}
-	}	
+	}
+	
+	public ImageIcon coursePlan(String majorNum, String courseNum) {
+		ImageIcon imageicon = new ImageIcon("Resource/coursePlan/" + majorNum + "/" + courseNum + ".JPG");
+		
+		return imageicon;
+	}
 }

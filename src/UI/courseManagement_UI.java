@@ -1,6 +1,8 @@
 package UI;
 
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -12,6 +14,7 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -53,26 +56,30 @@ public class courseManagement_UI extends JPanel {
 		return splited;
 	}
 	
-	// 수강인원 업데이트
+	// 전체 수강 인원(curStuNum.txt) 업데이트
 	public void updaeCourseStudentNumber(int courseNum) {
-		String line = null;
-		String[] splited = null;
+		String[] line = new String[10];
+		String[] splited = new String[10];
 		String toWrite = "";
+		String majorCourseNum = "";
 		try {
 			String path = System.getProperty("user.dir");
 			File file = new File(path + "/Resource/curStuNum.txt");
 			BufferedReader br = new BufferedReader(new FileReader(file));
-			for (int i = 0; i < majorNum+1; i++) {
-				line = br.readLine();
+			for (int i = 0; i < 10; i++) {
+				line[i] = br.readLine();
 			}
-			splited = line.split(" ");
+			splited = line[majorNum].split(" ");
 			br.close();
 			splited[courseNum] = Integer.toString((Integer.parseInt(splited[courseNum])+1));
 			
 			for(int i=0; i<splited.length; i++) {
-				toWrite += splited[i] + " ";
+				majorCourseNum += splited[i] + " ";
 			}
-			
+			line[majorNum] = majorCourseNum;
+			for(int i=0; i<10; i++) {
+				toWrite += line[i] + "\n";
+			}
 			FileWriter fw = new FileWriter(file, false);
 			fw.write(toWrite);
 			fw.flush();
@@ -191,12 +198,15 @@ public class courseManagement_UI extends JPanel {
 		grade_bt.addActionListener(new MyActionListener());
 		course_bt.addActionListener(new MyActionListener());
 		re.addActionListener(new MyActionListener());
+		
+		// 수강 신청, 강의 계획서 조회 이벤트 리스너
 		for(int i=0; i<10; i++) {
-			String course = app[i].getName();
+			// 신청 버튼 이벤트 리스너
+			String signUpCourse = app[i].getName();
 			app[i].addActionListener(new MyActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if(coursemanagementdao.signUp(ID, Integer.parseInt(course)).equals("Y")) {
-						updaeCourseStudentNumber(Integer.parseInt(course));
+					if(coursemanagementdao.signUp(ID, Integer.parseInt(signUpCourse)).equals("Y")) {
+						updaeCourseStudentNumber(Integer.parseInt(signUpCourse));
 						updatePersonLabel();
 						System.out.println("Y");
 					}
@@ -205,10 +215,38 @@ public class courseManagement_UI extends JPanel {
 					}
 				}
 			});
-			check[i].addActionListener(new MyActionListener());
+			
+			// 강의 계획서 조회 버튼 이벤트 리스너
+			String coursePlanCourse = check[i].getName();
+			System.out.println("coursePlanCourse : " + coursePlanCourse);
+			check[i].addActionListener(new MyActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					System.out.println("in actionPerformed : " + coursePlanCourse);
+					new newWindow(coursemanagementdao.coursePlan(Integer.toString(majorNum), coursePlanCourse));
+				}
+			});
 		}
 	}
 	
+	// 이미지 받아와서 새창 띄워 줌.
+	class newWindow extends JFrame{
+		newWindow(ImageIcon coursePlanImg){
+			// setDefaultCloseOperation 정의 금지!
+			// -> 새창 끄면 원래 창도 같이 꺼짐!!
+			setTitle("강의 계획서");
+			JPanel NewWindowContainer = new JPanel();
+			setContentPane(NewWindowContainer);
+			
+			JLabel NewLabel = new JLabel("");
+			NewLabel.setIcon(coursePlanImg);
+			NewLabel.setBounds(0, 0, 500, 650);
+			NewWindowContainer.add(NewLabel);
+			
+			setSize(500,650);
+			setResizable(true);
+			setVisible(true);
+		}
+	}
 
 	class MyActionListener implements ActionListener {
 		@Override
@@ -229,10 +267,6 @@ public class courseManagement_UI extends JPanel {
 				break;
 			case "돌아가기":
 				ui.update_UI("Main_Menu_Student");
-				break;
-			case "신청":
-				System.out.println("신청 버튼");
-				// 여기서 전역변수주고 구분해야하나?
 				break;
 			case "조회":
 				System.out.println("조회 버튼");
