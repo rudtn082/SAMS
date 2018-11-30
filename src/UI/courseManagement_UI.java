@@ -199,6 +199,7 @@ public class courseManagement_UI extends JPanel {
 					if(coursemanagementdao.signUp(ID, Integer.parseInt(course)).equals("Y")) {
 						updaeCourseStudentNumber(Integer.parseInt(course));
 						updatePersonLabel();
+						ui.update_UI("courseManagement_UI");
 						System.out.println("Y");
 					}
 					else {

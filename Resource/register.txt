@@ -7,3 +7,4 @@ czxsda 16000001 sda 남 true 161616
 박경수 16000003 ㅇㄴㅁ 여 false 123123
 ㄱㅂㅇㄴㅁ 16123456 ㅇㄴㅁㅇㅁㄴ 남 true 123445
 jominseok 20164149 uno 남 true 940521
+sad 16161123 dsa 남 true 161616

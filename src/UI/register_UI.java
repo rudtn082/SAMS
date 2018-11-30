@@ -260,5 +260,4 @@ public class register_UI extends JPanel {
 			}
 		}
 	}
-
 }

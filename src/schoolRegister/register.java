@@ -39,11 +39,13 @@ public class register {
 				}
 				saveString = sName + " " + sID + " " + sAddress + " " + sGender + " " + sStatus + " " + sDOB;
 				register_save1();
-				return "학번 다르네,,, 저장해야징 ㄱㄷ";
+				register_save3(sID);
+				return "학적 저장을 성공하였습니다.";
 			} else { // array가 null이면 파일이 없는 것(학생 데이터가 없음)이므로 진행한다.
 				saveString = sName + " " + sID + " " + sAddress + " " + sGender + " " + sStatus + " " + sDOB;
 				System.out.println("파일 없음");
 				register_save2();
+				register_save3(sID);
 				return "학적 저장을 성공하였습니다.";
 			}
 		} else
@@ -141,6 +143,27 @@ public class register {
 		try {
 			writer = new FileWriter(file, false);
 			writer.write(saveString);
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (writer != null)
+					writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	// 파일 저장 함수 (학생별 txt 생성)
+	public void register_save3(int studentNum) {
+		String path = System.getProperty("user.dir");
+		File file = new File(path + "/Resource/signUp/" + studentNum + ".txt");
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter(file, false);
+			writer.write("0 0 0 0 0 0 0 0 0 0");
 			writer.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
