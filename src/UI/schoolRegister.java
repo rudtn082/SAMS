@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 public class schoolRegister extends JPanel {
 	JButton curriculum_bt, register_bt, grade_bt, course_bt, srcheck_bt, srchange_bt;
 	UI_Main ui;
-	JLabel la = new JLabel("No Mouse Event");
 
 	public schoolRegister(UI_Main ui) {
 		this.ui = ui;
@@ -25,15 +24,6 @@ public class schoolRegister extends JPanel {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("Resource/schoolRegister.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
-
-		////////////////////////////////////////////////////////////////////////// 좌표볼려구
-
-		addMouseListener(new MyMouseListener());
-		addMouseMotionListener(new MyMouseListener());
-		la.setBounds(0, 0, 200, 30);
-		la.setForeground(Color.WHITE);
-
-		////////////////////////////////////////////////////////////////////////////
 
 		// 교과관리 버튼 추가
 		curriculum_bt = new JButton("교과관리");
@@ -84,7 +74,6 @@ public class schoolRegister extends JPanel {
 		add(register_bt);
 		add(grade_bt);
 		add(course_bt);
-		add(la);
 		add(srchange_bt);
 		add(srcheck_bt);
 		add(lblNewLabel);
@@ -116,46 +105,9 @@ public class schoolRegister extends JPanel {
 				ui.update_UI("checkInfo_UI");
 				break;
 			case "학적 변경":
-				System.out.println("학적 변경 버튼");
+				ui.update_UI("changeRegister_UI");
 				break;
 			}
 		}
-	}
-
-	class MyMouseListener implements MouseListener, MouseMotionListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			la.setText("MouseClicked(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			la.setText("MousePressed(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			la.setText("MouseReleased(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseDragged(MouseEvent e) {
-			la.setText("MouseDragged(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseMoved(MouseEvent e) {
-			la.setText("MouseMoved(" + e.getX() + "," + e.getY() + ")");
-		}
-
 	}
 }

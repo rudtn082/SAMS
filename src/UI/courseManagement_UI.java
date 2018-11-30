@@ -99,6 +99,7 @@ public class courseManagement_UI extends JPanel {
 		Student st = ui.getStudent();
 		String ID = st.getsID();
 		
+		if(ID == null) return;
 		majorNum = Integer.parseInt(ID.substring(4,5));
 		String[][] subList = subcheckdao.subCheckDAO();
 		curStrNum = readCourseStudentNumber(majorNum);

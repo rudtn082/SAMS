@@ -12,13 +12,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import UI.schoolRegister.MyActionListener;
-import UI.schoolRegister.MyMouseListener;
-
 public class curriculum_UI extends JPanel  {
 	JButton curriculum_bt, register_bt, grade_bt, course_bt, subCheck_bt, scheduleCheck_bt, courseCheck_bt, altCourse_bt;
 	UI_Main ui;
-	JLabel la = new JLabel("No Mouse Event");
 
 	public curriculum_UI(UI_Main ui) {
 		this.ui = ui;
@@ -28,13 +24,6 @@ public class curriculum_UI extends JPanel  {
 		JLabel lblNewLabel = new JLabel("교과 관리");
 		lblNewLabel.setIcon(new ImageIcon("Resource/curriculum.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
-
-		////////////////////////////////////////////////////////////////////////// 좌표볼려구
-
-		addMouseListener(new MyMouseListener());
-		addMouseMotionListener(new MyMouseListener());
-		la.setBounds(0, 0, 200, 30);
-		la.setForeground(Color.WHITE);
 
 		// 메뉴 바  버튼 들 //
 
@@ -105,7 +94,6 @@ public class curriculum_UI extends JPanel  {
 		add(register_bt);
 		add(grade_bt);
 		add(course_bt);
-		add(la);
 		// 교과 관리
 		add(subCheck_bt);
 		add(scheduleCheck_bt);
@@ -157,42 +145,5 @@ public class curriculum_UI extends JPanel  {
 				break;
 			}
 		}
-	}
-
-	class MyMouseListener implements MouseListener, MouseMotionListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			la.setText("MouseClicked(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			la.setText("MousePressed(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			la.setText("MouseReleased(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-		}
-
-		@Override
-		public void mouseDragged(MouseEvent e) {
-			la.setText("MouseDragged(" + e.getX() + "," + e.getY() + ")");
-		}
-
-		@Override
-		public void mouseMoved(MouseEvent e) {
-			la.setText("MouseMoved(" + e.getX() + "," + e.getY() + ")");
-		}
-
 	}
 }
