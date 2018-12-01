@@ -8,23 +8,24 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
-import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
 
 public class courseManagementDAO {
-	
 
-	
+	// 수강 신청 버튼 눌렀을 때
 	public String signUp(String ID, int courseNum) {
 		String Y = "Y";
 		String N = "N";
 		String[] checkSignUp = readCourseStudentNumber(ID);
 		if(checkSignUp[courseNum].equals("1")) {
 			return N;
-			
 		}
-		else {
+		else if(checkSignUp[courseNum].equals("0")){
 			writeCourseStudentNumber(ID, courseNum, "1");
 			return Y;
+		}
+		else {	// 대체 여기에 왜들어오는겨 미친놈으 새끼가 저리꺼졍
+			writeCourseStudentNumber(ID, courseNum, "1");
+			return N;
 		}
 		
 	}
@@ -47,6 +48,7 @@ public class courseManagementDAO {
 		return line;
 	}
 	
+	// 해당 학생의 수강 현황 txt 파일 업데이트
 	public void writeCourseStudentNumber(String ID, int courseNum, String check) {
 		String[] line = {""};
 		String toWrite = "";
@@ -72,5 +74,11 @@ public class courseManagementDAO {
 		} catch (IOException e) {
 			System.out.println(e);
 		}
-	}	
+	}
+	
+	public ImageIcon coursePlan(String majorNum, String courseNum) {
+		ImageIcon imageicon = new ImageIcon("Resource/coursePlan/" + majorNum + "/" + courseNum + ".jpg");
+		
+		return imageicon;
+	}
 }
