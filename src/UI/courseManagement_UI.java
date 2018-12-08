@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -208,10 +209,10 @@ public class courseManagement_UI extends JPanel {
 					if(coursemanagementdao.signUp(ID, Integer.parseInt(signUpCourse)).equals("Y")) {
 						updaeCourseStudentNumber(Integer.parseInt(signUpCourse));
 						updatePersonLabel();
-						System.out.println("Y");
+						JOptionPane.showMessageDialog(null, "수강신청 완료하였습니다.", "수강신청 결과", JOptionPane.INFORMATION_MESSAGE);
 					}
 					else {
-						System.out.println("N");
+						JOptionPane.showMessageDialog(null, "수강신청에 실패 하였습니다.", "수강신청 결과", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			});
