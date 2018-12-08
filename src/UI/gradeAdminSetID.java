@@ -113,18 +113,21 @@ public class gradeAdminSetID extends JPanel {
 				break;
 			case "확인":
 				grade stu = new grade();
-				String stuStr = stu.checkSID(sIDfield.getText());
+				boolean stuStr = stu.checkSID(sIDfield.getText());
 				// 학번 예외처리
 				if (!sIDfield.getText().isEmpty()) {// 학번을 적었으면
 					if (isStringDouble(sIDfield.getText()) == false) { // 숫자로 잘 입력 안했으면!!!
 						JOptionPane.showMessageDialog(null, "학번은 숫자로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
 						break;
-					} else if (!(stuStr == null)) { // 숫자로 잘 입력 했고 아이디가 있으면
+					} else if (stuStr) { // 숫자로 잘 입력 했고 아이디가 있으면
 						if (isStringEqualToTemp(stu.checkSubject(sIDfield.getText(), 1))) { // 숫자로 잘입력했고 아이디가 있고 점수도 있으면
 							JOptionPane.showMessageDialog(null, "학생의 정보가 이미 있습니다.", "입력 오류",
 									JOptionPane.WARNING_MESSAGE);
 							break;
 						}
+					} else if (!stuStr){
+						JOptionPane.showMessageDialog(null, "없는 학번입니다.", "입력 결과", JOptionPane.WARNING_MESSAGE);
+						break;
 					} else {
 						JOptionPane.showMessageDialog(null, "학생 성적란을 생성합니다.", "입력 결과", JOptionPane.INFORMATION_MESSAGE);
 					}

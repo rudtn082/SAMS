@@ -27,18 +27,18 @@ public class grade {
 		}
 	}
 	
-	public String checkSID(String sID) {
+	public boolean checkSID(String sID) {
 		grade_read(); 
 		if (array.isEmpty() == false) {
 			for (int i = 0; i < array.size(); i++) {
-				String[] splitString = array.get(i).split("[,]");
+				String[] splitString = array.get(i).split(",");
 				if (sID.equals(splitString[0])) {
-					return splitString[0];
+					return true;
 				}
 			}
-			return null;
+			return false;
 		} else { // array가 null이면 파일이 없는 것(학생 데이터가 없음이므로
-			return null;
+			return false;
 		}
 	}
 	
@@ -94,36 +94,6 @@ public class grade {
 			System.out.println(e);
 		}
 	}
-	
-	/*
-	public String setGrade ( String[] grade, String sID) {
-		String Y = "Y";
-		String N = "N";
-		String line = "";
-		
-		
-		try {
-			String path = System.getProperty("user.dir");
-			File file = new File(path + "/Resource/signUp/grades.txt");
-			
-			for( int i=0; i<12; i++) {
-				line = grade[i] + ",";;
-			}
-			
-			FileWriter fw = new FileWriter(file, false);
-			fw.write(line);
-			fw.flush();
-			fw.close();
-			
-		} catch (FileNotFoundException e) {
-			return N;
-		} catch (IOException e) {
-			System.out.println(e);
-		}
-		return Y;
-	}
-	*/
-		
 }
 
 

@@ -232,6 +232,7 @@ public class register_UI extends JPanel {
 				String message = reg.setSID(name.getText(), Integer.parseInt(id.getText()), address.getText(),
 						gender.getText(), YorN, Integer.parseInt(dob.getText()));
 				JOptionPane.showMessageDialog(null, message, "입력 결과", JOptionPane.INFORMATION_MESSAGE);
+				ui.update_UI("Main_Menu_admin");
 				break;
 			case "취소":
 				ui.update_UI("Main_Menu_admin");

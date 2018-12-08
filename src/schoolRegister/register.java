@@ -40,12 +40,13 @@ public class register {
 				saveString = sName + " " + sID + " " + sAddress + " " + sGender + " " + sStatus + " " + sDOB;
 				register_save1();
 				register_save3(sID);
+				register_save4(sID);
 				return "학적 저장을 성공하였습니다.";
 			} else { // array가 null이면 파일이 없는 것(학생 데이터가 없음)이므로 진행한다.
 				saveString = sName + " " + sID + " " + sAddress + " " + sGender + " " + sStatus + " " + sDOB;
-				System.out.println("파일 없음");
 				register_save2();
 				register_save3(sID);
+				register_save4(sID);
 				return "학적 저장을 성공하였습니다.";
 			}
 		} else
@@ -141,7 +142,7 @@ public class register {
 		File file = new File(path + "/Resource/register.txt");
 		FileWriter writer = null;
 		try {
-			writer = new FileWriter(file, false);
+			writer = new FileWriter(file);
 			writer.write(saveString);
 			writer.flush();
 		} catch (IOException e) {
@@ -164,6 +165,28 @@ public class register {
 		try {
 			writer = new FileWriter(file, false);
 			writer.write("0 0 0 0 0 0 0 0 0 0");
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (writer != null)
+					writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	// 파일 저장 함수 (grade)
+	public void register_save4(int studentNum) {
+		String path = System.getProperty("user.dir");
+		File file = new File(path + "/Resource/gradeManagement/grades.txt");
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter(file, true);
+			writer.write(System.getProperty("line.separator"));
+			writer.write(studentNum +",0,null,null,null,null,null,null,null,null,null,null");
 			writer.flush();
 		} catch (IOException e) {
 			e.printStackTrace();

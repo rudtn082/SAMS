@@ -16,18 +16,6 @@ public class registerGrade {
 	private String saveString, saveString3; // 저장 시 임시 string 변수
 
 	public registerGrade() {
-		setSID(null);
-		setGpa(0.00);
-		setSub1(null);
-		setSub2(null);
-		setSub3(null);
-		setSub4(null);
-		setSub5(null);
-		setSub6(null);
-		setSub7(null);
-		setSub8(null);
-		setSub9(null);
-		setSub10(null);
 	}
 
 	// 학번 부여
@@ -156,103 +144,6 @@ public class registerGrade {
 		} catch (Exception a1) {
 			a1.printStackTrace();
 		}
-	}
-
-	// getset
-	public Double getGpa() {
-		return gpa;
-	}
-
-	public void setGpa(double gpa) {
-		this.gpa = gpa;
-	}
-
-	public String getSub1() {
-		return subject1;
-	}
-
-	public void setSub1(String sub1) {
-		this.subject1 = sub1;
-	}
-
-	public String getSub2() {
-		return subject2;
-	}
-
-	public void setSub2(String sub2) {
-		this.subject2 = sub2;
-	}
-
-	public String getSub3() {
-		return subject3;
-	}
-
-	public void setSub3(String sub3) {
-		this.subject3 = sub3;
-	}
-
-	public String getSub4() {
-		return subject4;
-	}
-
-	public void setSub4(String sub4) {
-		this.subject4 = sub4;
-	}
-
-	public String getSub5() {
-		return subject5;
-	}
-
-	public void setSub5(String sub5) {
-		this.subject5 = sub5;
-	}
-
-	public String getSub6() {
-		return subject6;
-	}
-
-	public void setSub6(String sub6) {
-		this.subject6 = sub6;
-	}
-
-	public String getSub7() {
-		return subject7;
-	}
-
-	public void setSub7(String sub7) {
-		this.subject7 = sub7;
-	}
-
-	public String getSub8() {
-		return subject8;
-	}
-
-	public void setSub8(String sub8) {
-		this.subject8 = sub8;
-	}
-
-	public String getSub9() {
-		return subject9;
-	}
-
-	public void setSub9(String sub9) {
-		this.subject9 = sub9;
-	}
-
-	public String getSub10() {
-		return subject10;
-	}
-
-	public void setSub10(String sub10) {
-		this.subject10 = sub10;
-	}
-
-	public String getSID() {
-		return sID;
-	}
-
-	public void setSID(String sID) {
-		this.sID = sID;
 	}
 
 	public boolean isStringEqualToTemp(String s) {

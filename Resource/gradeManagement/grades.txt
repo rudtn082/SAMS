@@ -1,2 +1,4 @@
-16000258,4.5,A+,A+,A+,A+,A+,A+,A+,A+,A+,A+
-17000001,4.5,A+,A+,A+,A+,A+,A+,A+,A+,A+,A+
+16000000,4.5,A+,A+,A+,A+,A+,A+,A+,A+,A+,A+
+17000000,0,null,null,null,null,null,null,null,null,null,null
+17000001,3.5,B+,B+,B+,B+,B+,B+,B+,B+,B+,B+
+18000001,0,null,null,null,null,null,null,null,null,null,null
