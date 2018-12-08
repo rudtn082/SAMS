@@ -33,6 +33,16 @@ public class UI_Main extends JFrame {
 		courseManagement_UI courseManagement_UI = new courseManagement_UI(this);
 		schedule_UI schedule_UI = new schedule_UI(this);
 		changeRegister_UI changeRegister_UI = new changeRegister_UI(this);
+		gradeManagement gradeManagement = new gradeManagement(this);
+		gradeByTerm_UI gradeByTerm_UI = new gradeByTerm_UI(this);
+		gradeAll_UI gradeAll_UI = new gradeAll_UI(this);
+		gradeAdmin_UI gradeAdmin_UI = new gradeAdmin_UI(this);
+		gradeAdminSetID gradeAdminSetID = new gradeAdminSetID(this);
+		scholarship scholarship = new scholarship(this);
+		scholarshipStatus_UI scholarshipStatus_UI = new scholarshipStatus_UI(this);
+		scholarshipStandard_UI scholarshipStandard_UI = new scholarshipStandard_UI(this);
+		setScholarship_UI setScholarship_UI = new setScholarship_UI(this);
+		
 		switch(panelName) {
 		case "Login":
 			getContentPane().removeAll();
@@ -112,6 +122,61 @@ public class UI_Main extends JFrame {
 			revalidate();
 			repaint();
 			break;
+		case "gradeManagement":
+			getContentPane().removeAll();
+			getContentPane().add(gradeManagement);
+			revalidate();
+			repaint();
+			break;
+		case "gradeByTerm_UI":
+			getContentPane().removeAll();
+			getContentPane().add(gradeByTerm_UI);
+			revalidate();
+			repaint();
+			break;
+		case "gradeAll_UI":
+			getContentPane().removeAll();
+			getContentPane().add(gradeAll_UI);
+			revalidate();
+			repaint();
+			break;
+		case "gradeAdmin_UI":
+			getContentPane().removeAll();
+			getContentPane().add(gradeAdmin_UI);
+			revalidate();
+			repaint();
+			break;
+		case "gradeAdminSetID":
+			getContentPane().removeAll();
+			getContentPane().add(gradeAdminSetID);
+			revalidate();
+			repaint();
+			break;
+		case "scholarship":
+			getContentPane().removeAll();
+			getContentPane().add(scholarship);
+			revalidate();
+			repaint();
+			break;
+		case "scholarshipStatus_UI":
+			getContentPane().removeAll();
+			getContentPane().add(scholarshipStatus_UI);
+			revalidate();
+			repaint();
+			break;
+		case "scholarshipStandard_UI":
+			getContentPane().removeAll();
+			getContentPane().add(scholarshipStandard_UI);
+			revalidate();
+			repaint();
+			break;
+		case "setScholarship_UI":
+			getContentPane().removeAll();
+			getContentPane().add(setScholarship_UI);
+			revalidate();
+			repaint();
+			break;
+			
 		}
 	}
 	
@@ -121,5 +186,8 @@ public class UI_Main extends JFrame {
 	public void setStudent(String ID, String Name) {
 		st.setsID(ID);
 		st.setsName(Name);
+	}
+	public void setStudentAdmin(String ID) {
+		st.setsID(ID);
 	}
 }
