@@ -206,7 +206,7 @@ public class Subject_UI extends JPanel {
 				ui.update_UI("schoolRegister");
 				break;
 			case "己利包府":
-				System.out.println("己利包府 滚瓢");
+				ui.update_UI("gradeManagement");
 				break;
 			case "背苞包府":
 				ui.update_UI("curriculum_UI");

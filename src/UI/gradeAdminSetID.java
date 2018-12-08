@@ -117,7 +117,7 @@ public class gradeAdminSetID extends JPanel {
 				ui.update_UI("gradeAdminSetID");
 				break;
 			case "장학관리":
-				ui.update_UI("scholarship");
+				System.out.println("장학관리 버튼");
 				break;
 			case "확인":
 				grade stu = new grade();

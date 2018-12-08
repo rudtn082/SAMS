@@ -22,6 +22,7 @@ public class checkInfo_UI extends JPanel {
 		// 饭捞酒眶 汲沥
 		setLayout(null);
 
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("Resource/checkInfo.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
@@ -32,6 +33,7 @@ public class checkInfo_UI extends JPanel {
 		if(st.getsID() == null) {
 			return;
 		}
+		if (ci.checkInfo(st.getsID()) == null) return;
 		String stuStr = ci.checkInfo(st.getsID());
 		String[] splitString = stuStr.split(" ");
 
@@ -122,7 +124,7 @@ public class checkInfo_UI extends JPanel {
 				ui.update_UI("schoolRegister");
 				break;
 			case "己利包府":
-				System.out.println("己利包府 滚瓢");
+				ui.update_UI("gradeManagement");
 				break;
 			case "背苞包府":
 				ui.update_UI("curriculum_UI");

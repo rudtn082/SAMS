@@ -250,7 +250,7 @@ public class gradeAdmin_UI extends JPanel {
 				ui.update_UI("gradeAdminSetID");
 				break;
 			case "장학관리":
-				ui.update_UI("scholarship");
+				System.out.println("장학관리 버튼");
 				break;
 			case "저장":
 				// 학번6 예외처리
@@ -449,7 +449,6 @@ public class gradeAdmin_UI extends JPanel {
 						subject7field.getText(), subject8field.getText(), subject9field.getText(),
 						subject10field.getText());
 				JOptionPane.showMessageDialog(null, message, "입력 결과", JOptionPane.INFORMATION_MESSAGE);
-				ui.update_UI("gradeAdminSetID");
 				break;
 
 			case "취소":

@@ -160,7 +160,7 @@ public class setScholarship_UI extends JPanel {
 				ui.update_UI("gradeAdminSetID");
 				break;
 			case "장학관리":
-				ui.update_UI("scholarship");
+				System.out.println("scholarship");
 				break;
 			case "저장":
 

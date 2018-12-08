@@ -110,6 +110,7 @@ public class courseManagement_UI extends JPanel {
 		Student st = ui.getStudent();
 		String ID = st.getsID();
 		
+		if(ID == null) return;
 		majorNum = Integer.parseInt(ID.substring(4,5));
 		String[][] subList = subcheckdao.subCheckDAO();
 		curStrNum = readCourseStudentNumber(majorNum);
@@ -265,7 +266,7 @@ public class courseManagement_UI extends JPanel {
 				ui.update_UI("schoolRegister");
 				break;
 			case "己利包府":
-				System.out.println("己利包府 滚瓢");
+				ui.update_UI("gradeManagement");
 				break;
 			case "背苞包府":
 				ui.update_UI("curriculum_UI");

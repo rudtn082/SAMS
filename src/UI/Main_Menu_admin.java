@@ -68,10 +68,10 @@ public class Main_Menu_admin extends JPanel {
 				ui.update_UI("register");
 				break;
 			case "己利包府":
-				System.out.println("己利包府 滚瓢");
+				ui.update_UI("gradeAdminSetID");
 				break;
 			case "厘切包府":
-				System.out.println("厘切包府 滚瓢");
+				ui.update_UI("scholarship");
 				break;
 			}
 		}

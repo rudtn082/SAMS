@@ -55,14 +55,14 @@ public class scholarshipStatus_UI extends JPanel {
 		register_bt.setContentAreaFilled(false);
 		register_bt.setFocusPainted(false);
 		register_bt.setForeground(Color.WHITE);
-		register_bt.setBounds(44, 23, 200, 55);
+		register_bt.setBounds(270, 23, 200, 55);
 
 		// 己利包府 滚瓢 眠啊
 		grade_bt = new JButton("己利包府");
 		grade_bt.setContentAreaFilled(false);
 		grade_bt.setFocusPainted(false);
 		grade_bt.setForeground(Color.WHITE);
-		grade_bt.setBounds(300, 23, 200, 55);
+		grade_bt.setBounds(520, 23, 200, 55);
 
 		// 厘切包府 滚瓢 眠啊
 		scholarship_bt = new JButton("厘切包府");

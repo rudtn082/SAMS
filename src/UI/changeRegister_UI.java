@@ -40,7 +40,9 @@ public class changeRegister_UI extends JPanel {
 		if (st.getsID() == null) {
 			return;
 		}
+
 		String stuStr = ci.checkInfo(st.getsID());
+		if (stuStr == null) return;
 		String[] splitString = stuStr.split(" ");
 
 		// 函版 傈 郴侩 免仿
@@ -154,7 +156,7 @@ public class changeRegister_UI extends JPanel {
 				ui.update_UI("schoolRegister");
 				break;
 			case "己利包府":
-				System.out.println("己利包府 滚瓢");
+				ui.update_UI("gradeManagement");
 				break;
 			case "背苞包府":
 				ui.update_UI("curriculum_UI");
