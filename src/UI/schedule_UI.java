@@ -58,7 +58,6 @@ public class schedule_UI extends JPanel {
 		JLabel timeTableLabel = new JLabel("");
 		timeTableLabel.setIcon(timeTable);
 		timeTableLabel.setBounds(205, 190, 580, 440);
-		timeTableLabel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.red));
 			
 		
 		// 교과관리 버튼 추가

@@ -60,14 +60,12 @@ public class Subject_UI extends JPanel {
 			subListLabel[i].setSize(280 , 35);
 			subListLabel[i].setText(subList[0][i]);
 			subListLabel[i].setLocation(400, height + (36*i));
-			subListLabel[i].setBorder(javax.swing.BorderFactory.createLineBorder(Color.red));
 		}
 
 		// 콤보 박스 ===============================================
 		JPanel panel = new JPanel();
 		panel.setBounds(750, 130, 110, 70);
 		panel.setOpaque(false);
-		panel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.blue));
 		
 		// 콤보 박스 내 선택 가능 메뉴 선언
 		String[] major = {"국어국문학과","영어영문학과","철학과","심리학과","무역학과","건축공학과","환경공학과","기계공학부","토목공학과","컴퓨터공학과"};
