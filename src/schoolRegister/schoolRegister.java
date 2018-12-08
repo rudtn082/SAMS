@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class register {
+public class schoolRegister {
 	ArrayList<String> array = new ArrayList<String>(); // 파일 읽은 값을 저장하는 arraylist
 	private String sName; // 이름
 	private String sAddress; // 주소
@@ -17,7 +17,7 @@ public class register {
 	private int sBOD; // 생년월일
 	private String saveString; // 저장 시 임시 string 변수
 
-	public register() {
+	public schoolRegister() {
 		setsName(null);
 		setsAddress(null);
 		setsGender(null);
@@ -39,17 +39,70 @@ public class register {
 				}
 				saveString = sName + " " + sID + " " + sAddress + " " + sGender + " " + sStatus + " " + sDOB;
 				register_save1();
+				register_grades1(sID);
 				register_save3(sID);
 				return "학적 저장을 성공하였습니다.";
 			} else { // array가 null이면 파일이 없는 것(학생 데이터가 없음)이므로 진행한다.
 				saveString = sName + " " + sID + " " + sAddress + " " + sGender + " " + sStatus + " " + sDOB;
 				System.out.println("파일 없음");
 				register_save2();
+				register_grades2(sID);
 				register_save3(sID);
 				return "학적 저장을 성공하였습니다.";
 			}
 		} else
 			return "학적 저장을 실패하였습니다.";
+	}
+	
+	public String changeInfo(int id, String name, String address, String gender) {
+		if (name.equals("") && address.equals("") && gender.equals("")) {
+			return "변동 사항을 입력해주세요.";
+		}
+		else {
+			register_read(); // 파일을 먼저 읽어온다.
+			if (array.isEmpty() == false) {
+				for (int i = 0; i < array.size(); i++) {
+					String[] splitString = array.get(i).split(" ");
+					if (id == Integer.parseInt(splitString[1])) {
+						// 같은 학번 있을 때
+						String str_name = null, str_address = null, str_gender = null;
+						if(name.equals("")) str_name = splitString[0];
+						else str_name = name;
+						if(address.equals("")) str_address = splitString[2];
+						else str_address = address;
+						if(gender.equals("")) str_gender = splitString[3];
+						else str_gender = gender;
+						
+						System.out.println(str_gender);
+						String str = str_name + " " + id + " " + str_address + " " + str_gender + " " + splitString[4] + " " + splitString[5];
+						array.remove(i);
+						array.add(str);
+						register_save();
+						return "학적이 변경되었습니다.";
+					}
+				}
+			}
+			else { // array가 null이면 파일이 없는 것(학생 데이터가 없음)이므로 실패
+				return "학적 변경을 실패하였습니다.";
+			}
+		}
+		return "학적 변경을 실패하였습니다.";
+	}
+	
+	public String checkInfo(String ID) {
+		
+		register_read(); // 파일을 먼저 읽어온다.
+		if (array.isEmpty() == false) {
+			for (int i = 0; i < array.size(); i++) {
+				String[] splitString = array.get(i).split(" ");
+				if (ID.equals(splitString[1])) {
+					return array.get(i);
+				}
+			}
+			return null;
+		} else { // array가 null이면 파일이 없는 것(학생 데이터가 없음이므로
+			return null;
+		}
 	}
 
 	// getset
@@ -110,6 +163,30 @@ public class register {
 			System.out.println(e);
 		} catch (IOException e) {
 			System.out.println(e);
+		}
+	}
+	
+	// 파일 저장 함수 (덮어쓰기)
+	public void register_save() {
+		String path = System.getProperty("user.dir");
+		File file = new File(path + "/Resource/register.txt");
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter(file, false);
+			for(int i = 0; i< array.size(); i++) {
+				writer.write(array.get(i));
+				writer.write(System.getProperty("line.separator"));
+			}
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (writer != null)
+					writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -176,4 +253,48 @@ public class register {
 			}
 		}
 	}
+	
+	// 파일 저장 함수 (grades 이어쓰기)
+	public void register_grades1(int studentNum) {
+		String path = System.getProperty("user.dir");
+		File file = new File(path + "/Resource/gradeManagement/grades.txt");
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter(file, true);
+			writer.write(System.getProperty("line.separator"));
+			writer.write(studentNum + ",null,null,null,null,null,null,null,null,null,null,null");
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (writer != null)
+					writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	// 파일 저장 함수 (grades 이어쓰기)
+	public void register_grades2(int studentNum) {
+		String path = System.getProperty("user.dir");
+		File file = new File(path + "/Resource/gradeManagement/grades.txt");
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter(file, false);
+			writer.write(studentNum + ",null,null,null,null,null,null,null,null,null,null,null");
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (writer != null)
+					writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 }

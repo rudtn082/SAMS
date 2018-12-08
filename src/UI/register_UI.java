@@ -30,7 +30,6 @@ public class register_UI extends JPanel {
 
 		// 切利包府 滚瓢 眠啊
 		register_bt = new JButton("切利包府");
-		register_bt.setBorderPainted(false);
 		register_bt.setContentAreaFilled(false);
 		register_bt.setFocusPainted(false);
 		register_bt.setForeground(Color.WHITE);
@@ -38,7 +37,6 @@ public class register_UI extends JPanel {
 
 		// 己利包府 滚瓢 眠啊
 		grade_bt = new JButton("己利包府");
-		grade_bt.setBorderPainted(false);
 		grade_bt.setContentAreaFilled(false);
 		grade_bt.setFocusPainted(false);
 		grade_bt.setForeground(Color.WHITE);
@@ -46,7 +44,6 @@ public class register_UI extends JPanel {
 
 		// 厘切包府 滚瓢 眠啊
 		scholarship_bt = new JButton("厘切包府");
-		scholarship_bt.setBorderPainted(false);
 		scholarship_bt.setContentAreaFilled(false);
 		scholarship_bt.setFocusPainted(false);
 		scholarship_bt.setForeground(Color.WHITE);
@@ -243,10 +240,10 @@ public class register_UI extends JPanel {
 				ui.update_UI("register");
 				break;
 			case "己利包府":
-				ui.update_UI("gradeAdminSedtID");
+				ui.update_UI("gradeAdminSetID");
 				break;
 			case "厘切包府":
-				System.out.println("厘切包府 滚瓢");
+				ui.update_UI("scholarship");
 				break;
 			}
 		}

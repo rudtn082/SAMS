@@ -16,7 +16,6 @@ import scholarshipManagement.scholarshipDAO;
 public class setScholarship_UI extends JPanel {
 	JButton register_bt, grade_bt, scholarship_bt, ok, cancel;
 	UI_Main ui;
-	JLabel aID;
 	JTextField majfield, stu1field, stu2field, stu3field, stu4field, stu5field, stu6field;
 	scholarshipDAO sc = new scholarshipDAO();
 
@@ -27,68 +26,56 @@ public class setScholarship_UI extends JPanel {
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Resource/gradeAdmin_UI.png"));
+		lblNewLabel.setIcon(new ImageIcon("Resource/setScholarship_UI.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
-
-		// 로그인 계정 라벨
-		aID = new JLabel("admin");
-		aID.setBounds(807, 133, 100, 20);
-		aID.setForeground(Color.WHITE);
 
 		// 학과명 필드
 		majfield = new JTextField(10);
-		majfield.setBounds(630, 235, 100, 20);
+		majfield.setBounds(600, 200, 100, 20);
 		majfield.setOpaque(false);
 		majfield.setForeground(Color.WHITE);
-		// subject1field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		majfield.setCaretColor(Color.white);
 
 		// 교과목2 필드
 		stu1field = new JTextField(10);
-		stu1field.setBounds(630, 273, 100, 20);
+		stu1field.setBounds(600, 240, 100, 20);
 		stu1field.setOpaque(false);
 		stu1field.setForeground(Color.WHITE);
-		// subject2field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		stu1field.setCaretColor(Color.white);
 
 		// 교과목3 필드
 		stu2field = new JTextField(10);
-		stu2field.setBounds(630, 311, 100, 20);
+		stu2field.setBounds(600, 280, 100, 20);
 		stu2field.setOpaque(false);
 		stu2field.setForeground(Color.WHITE);
-		// subject3field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		stu2field.setCaretColor(Color.white);
 
 		// 교과목4 필드
 		stu3field = new JTextField(10);
-		stu3field.setBounds(630, 349, 100, 20);
+		stu3field.setBounds(600, 320, 100, 20);
 		stu3field.setOpaque(false);
 		stu3field.setForeground(Color.WHITE);
-		// subject4field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		stu3field.setCaretColor(Color.white);
 
 		// 교과목5 필드
 		stu4field = new JTextField(10);
-		stu4field.setBounds(630, 387, 100, 20);
+		stu4field.setBounds(600, 360, 100, 20);
 		stu4field.setOpaque(false);
 		stu4field.setForeground(Color.WHITE);
-		// subject5field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		stu4field.setCaretColor(Color.white);
 
 		// 교과목6 필드
 		stu5field = new JTextField(10);
-		stu5field.setBounds(630, 425, 100, 20);
+		stu5field.setBounds(600, 400, 100, 20);
 		stu5field.setOpaque(false);
 		stu5field.setForeground(Color.WHITE);
-		// subject6field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		stu5field.setCaretColor(Color.white);
 
 		// 교과목7 필드
 		stu6field = new JTextField(10);
-		stu6field.setBounds(630, 463, 100, 20);
+		stu6field.setBounds(600, 440, 100, 20);
 		stu6field.setOpaque(false);
 		stu6field.setForeground(Color.WHITE);
-		// subject7field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		stu6field.setCaretColor(Color.white);
 
 		// 학적관리 버튼 추가
@@ -135,7 +122,6 @@ public class setScholarship_UI extends JPanel {
 		add(stu4field);
 		add(stu5field);
 		add(stu6field);
-		add(aID);
 		add(register_bt);
 		add(grade_bt);
 		add(scholarship_bt);
@@ -154,16 +140,15 @@ public class setScholarship_UI extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			switch (e.getActionCommand()) {
 			case "학적관리":
-				ui.update_UI("register");
+				ui.update_UI("register_UI");
 				break;
 			case "성적관리":
 				ui.update_UI("gradeAdminSetID");
 				break;
 			case "장학관리":
-				System.out.println("scholarship");
+				ui.update_UI("scholarship");
 				break;
 			case "저장":
-
 				// 학과명 예외처리
 				if (!majfield.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "학과명을 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);

@@ -90,7 +90,7 @@ public class schoolRegister extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			switch (e.getActionCommand()) {
 			case "切利包府":
-				ui.update_UI("schoolRegister");
+				ui.update_UI("register_UI");
 				break;
 			case "己利包府":
 				ui.update_UI("gradeManagement");

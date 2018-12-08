@@ -16,14 +16,14 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import curriculum.courseCheckDAO;
+import curriculum.curriculumDAO;
 
 public class courseCheck_UI extends JPanel {
 	JButton curriculum_bt, register_bt, grade_bt, course_bt, re;
 	UI_Main ui;
 	Object seletedYear = "2018";
 	Object seletedMajor = "국어국문학과";
-	courseCheckDAO courseCheck = new courseCheckDAO();
+	curriculumDAO courseCheck = new curriculumDAO();
 
 	public courseCheck_UI(UI_Main ui) {
 		this.ui = ui;

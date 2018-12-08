@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import People.Student;
 import UI.Main_Menu_admin.MyActionListener;
 import courseManagement.courseManagementDAO;
-import curriculum.subCheckDAO;
+import curriculum.curriculumDAO;
 import People.Admin;
 import gradeManagement.grade;
 import gradeManagement.registerGrade;
@@ -28,12 +28,11 @@ import gradeManagement.registerGrade;
 public class gradeAdmin_UI extends JPanel {
 	JButton register_bt, grade_bt, scholarship_bt, ok, cancel;
 	UI_Main ui;
-	JLabel aID;
 	JLabel[] sub = new JLabel[10]; // 과목명
 	JTextField subject1field, subject2field, subject3field, subject4field, subject5field, subject6field, subject7field,
 			subject8field, subject9field, subject10field, gpafield;
 	int majorNum;
-	subCheckDAO subcheckdao = new subCheckDAO();
+	curriculumDAO subcheckdao = new curriculumDAO();
 	String[] grade = null;
 	String sID;
 	courseManagementDAO coursemanagementdao = new courseManagementDAO();
@@ -89,7 +88,6 @@ public class gradeAdmin_UI extends JPanel {
 		subject1field.setBounds(630, 235, 100, 20);
 		subject1field.setOpaque(false);
 		subject1field.setForeground(Color.WHITE);
-		// subject1field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		subject1field.setCaretColor(Color.white);
 
 		// 교과목2 필드
@@ -97,7 +95,6 @@ public class gradeAdmin_UI extends JPanel {
 		subject2field.setBounds(630, 273, 100, 20);
 		subject2field.setOpaque(false);
 		subject2field.setForeground(Color.WHITE);
-		// subject2field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		subject2field.setCaretColor(Color.white);
 
 		// 교과목3 필드
@@ -105,7 +102,6 @@ public class gradeAdmin_UI extends JPanel {
 		subject3field.setBounds(630, 311, 100, 20);
 		subject3field.setOpaque(false);
 		subject3field.setForeground(Color.WHITE);
-		// subject3field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		subject3field.setCaretColor(Color.white);
 
 		// 교과목4 필드
@@ -113,7 +109,6 @@ public class gradeAdmin_UI extends JPanel {
 		subject4field.setBounds(630, 349, 100, 20);
 		subject4field.setOpaque(false);
 		subject4field.setForeground(Color.WHITE);
-		// subject4field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		subject4field.setCaretColor(Color.white);
 
 		// 교과목5 필드
@@ -121,7 +116,6 @@ public class gradeAdmin_UI extends JPanel {
 		subject5field.setBounds(630, 387, 100, 20);
 		subject5field.setOpaque(false);
 		subject5field.setForeground(Color.WHITE);
-		// subject5field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		subject5field.setCaretColor(Color.white);
 
 		// 교과목6 필드
@@ -129,7 +123,6 @@ public class gradeAdmin_UI extends JPanel {
 		subject6field.setBounds(630, 425, 100, 20);
 		subject6field.setOpaque(false);
 		subject6field.setForeground(Color.WHITE);
-		// subject6field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		subject6field.setCaretColor(Color.white);
 
 		// 교과목7 필드
@@ -137,7 +130,6 @@ public class gradeAdmin_UI extends JPanel {
 		subject7field.setBounds(630, 463, 100, 20);
 		subject7field.setOpaque(false);
 		subject7field.setForeground(Color.WHITE);
-		// subject7field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		subject7field.setCaretColor(Color.white);
 
 		// 교과목8 필드
@@ -145,7 +137,6 @@ public class gradeAdmin_UI extends JPanel {
 		subject8field.setBounds(630, 501, 100, 20);
 		subject8field.setOpaque(false);
 		subject8field.setForeground(Color.WHITE);
-		// subject8field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		subject8field.setCaretColor(Color.white);
 
 		// 교과목9 필드
@@ -153,7 +144,6 @@ public class gradeAdmin_UI extends JPanel {
 		subject9field.setBounds(630, 539, 100, 20);
 		subject9field.setOpaque(false);
 		subject9field.setForeground(Color.WHITE);
-		// subject9field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		subject9field.setCaretColor(Color.white);
 
 		// 교과목10 필드
@@ -161,7 +151,6 @@ public class gradeAdmin_UI extends JPanel {
 		subject10field.setBounds(630, 577, 100, 20);
 		subject10field.setOpaque(false);
 		subject10field.setForeground(Color.WHITE);
-		// subject10field.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		subject10field.setCaretColor(Color.white);
 
 		// GPA 필드
@@ -169,13 +158,7 @@ public class gradeAdmin_UI extends JPanel {
 		gpafield.setBounds(630, 615, 100, 20);
 		gpafield.setOpaque(false);
 		gpafield.setForeground(Color.WHITE);
-		// gpafield.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		gpafield.setCaretColor(Color.white);
-
-		// 로그인 계정 라벨
-		aID = new JLabel("admin");
-		aID.setBounds(807, 133, 100, 20);
-		aID.setForeground(Color.WHITE);
 
 		// 학적관리 버튼 추가
 		register_bt = new JButton("학적관리");
@@ -225,7 +208,6 @@ public class gradeAdmin_UI extends JPanel {
 		add(subject9field);
 		add(subject10field);
 		add(gpafield);
-		add(aID);
 		add(register_bt);
 		add(grade_bt);
 		add(scholarship_bt);
@@ -250,20 +232,9 @@ public class gradeAdmin_UI extends JPanel {
 				ui.update_UI("gradeAdminSetID");
 				break;
 			case "장학관리":
-				System.out.println("장학관리 버튼");
+				ui.update_UI("scholarship");
 				break;
 			case "저장":
-				// 학번6 예외처리
-				/*
-				 * if (stu6field.getText().isEmpty()) { JOptionPane.showMessageDialog(null,
-				 * "학번을 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE); break; } else { if
-				 * (isStringDouble(stu6field.getText()) == false) {
-				 * JOptionPane.showMessageDialog(null, "학번은 숫자로 입력해주세요.", "입력 오류",
-				 * JOptionPane.WARNING_MESSAGE); break; } else { if
-				 * (stu6field.getText().length() != 8) { JOptionPane.showMessageDialog(null,
-				 * "학번은 8자리로 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE); break; } } }
-				 */
-
 				// GPA 예외처리
 				if (gpafield.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "GPA를 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
@@ -449,6 +420,7 @@ public class gradeAdmin_UI extends JPanel {
 						subject7field.getText(), subject8field.getText(), subject9field.getText(),
 						subject10field.getText());
 				JOptionPane.showMessageDialog(null, message, "입력 결과", JOptionPane.INFORMATION_MESSAGE);
+				ui.update_UI("Main_Menu_admin");
 				break;
 
 			case "취소":

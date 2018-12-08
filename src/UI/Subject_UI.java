@@ -19,14 +19,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import People.Student;
-import curriculum.subCheckDAO;
+import curriculum.curriculumDAO;
 
 public class Subject_UI extends JPanel {
 	JButton curriculum_bt, register_bt, grade_bt, course_bt;
 	UI_Main ui;
 	JLabel la = new JLabel("No Mouse Event");
 	Object seletedMajor = "국어국문학과";
-	subCheckDAO subcheckdao = new subCheckDAO();
+	curriculumDAO subcheckdao = new curriculumDAO();
 
 	public Subject_UI(UI_Main ui) {
 		this.ui = ui;

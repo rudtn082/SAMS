@@ -3,9 +3,6 @@ package UI;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,8 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import People.Student;
-import schoolRegister.changeRegister;
-import schoolRegister.checkInfo;
+import schoolRegister.*;
 
 public class changeRegister_UI extends JPanel {
 	Student st;

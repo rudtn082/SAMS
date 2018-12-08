@@ -22,15 +22,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import People.Student;
-import curriculum.altCourseDAO;
-import curriculum.scheduleCheckDAO;
+import curriculum.curriculumDAO;
 import schoolRegister.checkInfo;
 
 public class schedule_UI extends JPanel {
 	JButton curriculum_bt, register_bt, grade_bt, course_bt, re;
 	UI_Main ui;
 	JLabel la = new JLabel("No Mouse Event");
-	scheduleCheckDAO schedulecheckdao = new scheduleCheckDAO();
+	curriculumDAO schedulecheckdao = new curriculumDAO();
 
 	public schedule_UI(UI_Main ui) {
 		this.ui = ui;

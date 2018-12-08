@@ -29,7 +29,6 @@ import gradeManagement.grade;
 public class gradeAdminSetID extends JPanel {
 	JButton register_bt, grade_bt, scholarship_bt, ok, cancel;
 	UI_Main ui;
-	JLabel aID;
 	JTextField sIDfield;
 
 	public gradeAdminSetID(UI_Main ui) {
@@ -43,16 +42,10 @@ public class gradeAdminSetID extends JPanel {
 
 		// 학번 필드 추가
 		sIDfield = new JTextField(10);
-		sIDfield.setBounds(670, 255, 100, 20);
+		sIDfield.setBounds(400, 343, 150, 30);
 		sIDfield.setOpaque(false);
 		sIDfield.setForeground(Color.WHITE);
-		// sIDfield.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		sIDfield.setCaretColor(Color.white);
-
-		// 로그인 계정 라벨
-		aID = new JLabel("admin");
-		aID.setBounds(807, 133, 100, 20);
-		aID.setForeground(Color.WHITE);
 
 		// 학적관리 버튼 추가
 		register_bt = new JButton("학적관리");
@@ -92,7 +85,6 @@ public class gradeAdminSetID extends JPanel {
 		cancel.setFocusPainted(false);
 
 		add(sIDfield);
-		add(aID);
 		add(register_bt);
 		add(grade_bt);
 		add(scholarship_bt);
@@ -117,7 +109,7 @@ public class gradeAdminSetID extends JPanel {
 				ui.update_UI("gradeAdminSetID");
 				break;
 			case "장학관리":
-				System.out.println("장학관리 버튼");
+				ui.update_UI("scholarship");
 				break;
 			case "확인":
 				grade stu = new grade();
@@ -129,18 +121,17 @@ public class gradeAdminSetID extends JPanel {
 						break;
 					} else if (!(stuStr == null)) { // 숫자로 잘 입력 했고 아이디가 있으면
 						if (isStringEqualToTemp(stu.checkSubject(sIDfield.getText(), 1))) { // 숫자로 잘입력했고 아이디가 있고 점수도 있으면
-							JOptionPane.showMessageDialog(null, "학생의 정보가 이미 있습니다.", "입력 오류",JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "학생의 정보가 이미 있습니다.", "입력 오류",
+									JOptionPane.WARNING_MESSAGE);
 							break;
 						}
 					} else {
-						registerGrade rg = new registerGrade(); // 숫자로 잘 입력했고 아이디가 없으면
 						JOptionPane.showMessageDialog(null, "학생 성적란을 생성합니다.", "입력 결과", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 
 				// 학번 설정
 				ui.setStudentAdmin(sIDfield.getText());
-				// gradeAdmin_UI gradeAdmin_UI = new gradeAdmin_UI(ui);
 				ui.update_UI("gradeAdmin_UI");
 				break;
 			case "취소":

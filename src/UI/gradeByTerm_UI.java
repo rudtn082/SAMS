@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import People.Student;
-import curriculum.subCheckDAO;
+import curriculum.curriculumDAO;
 import courseManagement.courseManagementDAO;
 
 import gradeManagement.grade;
@@ -27,7 +27,7 @@ public class gradeByTerm_UI extends JPanel {
 	JLabel[] sub = new JLabel[10]; // 苞格疙
 	JLabel[] termGrade = new JLabel[10]; // 苞格 己利
 	
-	subCheckDAO subcheckdao = new subCheckDAO();
+	curriculumDAO subcheckdao = new curriculumDAO();
 	String[] grade = null;
 	courseManagementDAO coursemanagementdao = new courseManagementDAO();
 	int majorNum;

@@ -13,13 +13,13 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import curriculum.altCourseDAO;
+import curriculum.curriculumDAO;
 
 public class altCourse extends JPanel {
 	JButton curriculum_bt, register_bt, grade_bt, course_bt, re;
 	UI_Main ui;
 	Object seletedMajor = "국어국문학과";
-	altCourseDAO altcoursedao = new altCourseDAO();
+	curriculumDAO altcoursedao = new curriculumDAO();
 
 	public altCourse(UI_Main ui) {
 		this.ui = ui;

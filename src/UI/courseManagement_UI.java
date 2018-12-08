@@ -14,10 +14,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import People.Student;
-import curriculum.subCheckDAO;
+import curriculum.curriculumDAO;
 import courseManagement.courseManagementDAO;
 
 public class courseManagement_UI extends JPanel {
@@ -27,7 +28,7 @@ public class courseManagement_UI extends JPanel {
 	JLabel[] person = new JLabel[10]; // 수강인원
 	JButton[] app = new JButton[10]; // 신청버튼
 	JButton[] check = new JButton[10]; // 조회 버튼
-	subCheckDAO subcheckdao = new subCheckDAO();
+	curriculumDAO subcheckdao = new curriculumDAO();
 	String[] curStrNum = null;
 	courseManagementDAO coursemanagementdao = new courseManagementDAO();
 	int majorNum;
@@ -214,10 +215,10 @@ public class courseManagement_UI extends JPanel {
 						updaeCourseStudentNumber(Integer.parseInt(signUpCourse));
 						updatePersonLabel();
 						ui.update_UI("courseManagement_UI");
-						System.out.println("Y");
+						JOptionPane.showMessageDialog(null, "수강신청 완료하였습니다.", "수강신청 결과", JOptionPane.INFORMATION_MESSAGE);
 					}
 					else if(coursemanagementdao.signUp(ID, Integer.parseInt(signUpCourse)).equals("N")){
-						System.out.println("N");
+						JOptionPane.showMessageDialog(null, "수강신청에 실패 하였습니다.", "수강신청 결과", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 						System.out.println("여긴 들어오시면 안되는데여");

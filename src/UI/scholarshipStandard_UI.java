@@ -12,7 +12,6 @@ import scholarshipManagement.scholarshipDAO;
 
 public class scholarshipStandard_UI extends JPanel {
 	JButton register_bt, grade_bt, scholarship_bt, re;
-	JLabel aID;
 	UI_Main ui;
 	scholarshipDAO sc = new scholarshipDAO();
 
@@ -23,7 +22,7 @@ public class scholarshipStandard_UI extends JPanel {
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Resource/schedule_UI.png"));
+		lblNewLabel.setIcon(new ImageIcon("Resource/scholarshipStatus_UI.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
 
 		// scholarshipManegementDAO 접근, 데이터 가져옴
@@ -33,12 +32,6 @@ public class scholarshipStandard_UI extends JPanel {
 		JLabel timeTableLabel = new JLabel("");
 		timeTableLabel.setIcon(timeTable);
 		timeTableLabel.setBounds(205, 190, 580, 440);
-		timeTableLabel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.red));
-
-		// 로그인 계정 라벨
-		aID = new JLabel("admin");
-		aID.setBounds(807, 133, 100, 20);
-		aID.setForeground(Color.WHITE);
 
 		// 학적관리 버튼 추가
 		register_bt = new JButton("학적관리");
@@ -61,11 +54,6 @@ public class scholarshipStandard_UI extends JPanel {
 		scholarship_bt.setForeground(Color.WHITE);
 		scholarship_bt.setBounds(556, 23, 200, 55);
 
-		// 로그인 계정 라벨
-		aID = new JLabel("admin");
-		aID.setBounds(807, 133, 100, 20);
-		aID.setForeground(Color.WHITE);
-
 		// 돌아가기 추가
 		re = new JButton("돌아가기");
 		re.setBackground(new Color(114, 137, 218));
@@ -78,7 +66,6 @@ public class scholarshipStandard_UI extends JPanel {
 		add(scholarship_bt);
 		add(register_bt);
 		add(grade_bt);
-		add(aID);
 		add(timeTableLabel);
 		add(lblNewLabel);
 
@@ -93,10 +80,10 @@ public class scholarshipStandard_UI extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			switch (e.getActionCommand()) {
 			case "학적관리":
-				ui.update_UI("schoolRegister");
+				ui.update_UI("register");
 				break;
 			case "성적관리":
-				ui.update_UI("gradeManagement");
+				ui.update_UI("gradeAdminSetID");
 				break;
 			case "장학관리":
 				ui.update_UI("scholarship");

@@ -14,7 +14,6 @@ import scholarshipManagement.scholarshipDAO;
 public class scholarshipStatus_UI extends JPanel {
 	JButton register_bt, grade_bt, scholarship_bt, re;
 	UI_Main ui;
-	JLabel aID;
 
 	JLabel[] scholarStu = new JLabel[10]; // 厘切积
 	String[] majors = null;
@@ -29,40 +28,33 @@ public class scholarshipStatus_UI extends JPanel {
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Resource/gradeByTerm_UI.png"));
+		lblNewLabel.setIcon(new ImageIcon("Resource/scholarshipStatus.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
 
-		for (int k = 0; k < 10; k++) {
-			majors = sc.getStatusByMaj(maj[k]);
-		}
-
 		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 6; j++) {
-				String personLabel = majors[j + 1];
-				scholarStu[j] = new JLabel(personLabel);
-				scholarStu[j].setBounds((670 + (50 * j)), (235 + (36 * i)), 100, 20);
-				scholarStu[j].setForeground(Color.WHITE);
+			String[] tmp = sc.getStatusByMaj(maj[i]);
+			String personLabel = "";
+			for (int j = 1; j < tmp.length; j++) {
+				personLabel = personLabel + tmp[j] + "  ";
 			}
+			scholarStu[i] = new JLabel(personLabel);
+			scholarStu[i].setBounds(450, (235 + (36 * i)), 400, 20);
+			scholarStu[i].setForeground(Color.WHITE);
 		}
-
-		// 肺弊牢 拌沥 扼骇
-		aID = new JLabel("admin");
-		aID.setBounds(807, 133, 100, 20);
-		aID.setForeground(Color.WHITE);
 
 		// 切利包府 滚瓢 眠啊
 		register_bt = new JButton("切利包府");
 		register_bt.setContentAreaFilled(false);
 		register_bt.setFocusPainted(false);
 		register_bt.setForeground(Color.WHITE);
-		register_bt.setBounds(270, 23, 200, 55);
+		register_bt.setBounds(44, 23, 200, 55);
 
 		// 己利包府 滚瓢 眠啊
 		grade_bt = new JButton("己利包府");
 		grade_bt.setContentAreaFilled(false);
 		grade_bt.setFocusPainted(false);
 		grade_bt.setForeground(Color.WHITE);
-		grade_bt.setBounds(520, 23, 200, 55);
+		grade_bt.setBounds(300, 23, 200, 55);
 
 		// 厘切包府 滚瓢 眠啊
 		scholarship_bt = new JButton("厘切包府");
@@ -80,16 +72,13 @@ public class scholarshipStatus_UI extends JPanel {
 		re.setFocusPainted(false);
 
 		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 6; j++) {
-				add(scholarStu[j]);
-			}
+			add(scholarStu[i]);
 		}
 
 		add(register_bt);
 		add(grade_bt);
 		add(scholarship_bt);
 		add(re);
-		add(aID);
 		add(lblNewLabel);
 		register_bt.addActionListener(new MyActionListener());
 		grade_bt.addActionListener(new MyActionListener());
@@ -105,10 +94,10 @@ public class scholarshipStatus_UI extends JPanel {
 			System.out.println("e.getModifiers : " + e.getModifiers());
 			switch (e.getActionCommand()) {
 			case "切利包府":
-				ui.update_UI("schoolRegister");
+				ui.update_UI("register");
 				break;
 			case "己利包府":
-				ui.update_UI("gradeManagement");
+				ui.update_UI("gradeAdminSetID");
 				break;
 			case "厘切包府":
 				ui.update_UI("scholarship");
