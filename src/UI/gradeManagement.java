@@ -22,7 +22,7 @@ public class gradeManagement extends JPanel {
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Resource/schoolRegister.png"));
+		lblNewLabel.setIcon(new ImageIcon("Resource/gradeManagement.png"));
 		lblNewLabel.setBounds(0, 0, 1024, 768);
 
 		// 교과관리 버튼 추가
